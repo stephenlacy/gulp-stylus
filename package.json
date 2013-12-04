@@ -9,7 +9,6 @@
 	"dependencies": {
     "stylus": "0.41.x",
     "event-stream": "~3.0.16",
-    "clone": "~0.1.10",
     "gulp-util": "0.0.1"
   },
   "devDependencies":{
