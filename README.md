@@ -67,7 +67,7 @@ gulp.task('default', function(){
 
 ## Examples
 
-You can view more examples in the [example folder.](https://github.com/wearefractal/gulp-stylus/tree/master/examples)
+You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
 ## LICENSE
 

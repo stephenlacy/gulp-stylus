@@ -1,8 +1,8 @@
 {	"name":"gulp-stylus",
 	"description":"Stylus plugin for Gulp",
-	"version":"0.0.1",
-	"homepage":"http://github.com/gulp-stylus",
-	"repository":"http://github.com/gulp-stylus.git",
+	"version":"0.0.2",
+	"homepage":"http://github.com/stevelacy/gulp-stylus",
+	"repository":"http://github.com/stevelacy/gulp-stylus.git",
 	"author":"Steve Lacy - slacy.me | Fractal wearefractal.com",
 	"main":"./index.js",
 
