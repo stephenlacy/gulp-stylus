@@ -1,29 +1,48 @@
-{	"name":"gulp-stylus",
-	"description":"Stylus plugin for Gulp",
-	"version":"0.0.2",
-	"homepage":"http://github.com/stevelacy/gulp-stylus",
-	"repository":"http://github.com/stevelacy/gulp-stylus.git",
-	"author":"Steve Lacy - slacy.me | Fractal wearefractal.com",
-	"main":"./index.js",
-
-	"dependencies": {
+{
+  "name": "gulp-stylus",
+  "description": "Stylus plugin for Gulp",
+  "version": "0.0.2",
+  "homepage": "http://github.com/stevelacy/gulp-stylus",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/stevelacy/gulp-stylus.git"
+  },
+  "author": "Steve Lacy - slacy.me | Fractal wearefractal.com",
+  "main": "./index.js",
+  "dependencies": {
     "stylus": "0.41.x",
     "event-stream": "~3.0.16",
     "gulp-util": "0.0.1"
   },
-  "devDependencies":{
-  	"mocha":"*",
-  	"should":"*",
-  	"gulp":"*"
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "gulp": "*"
   },
-  "engines":{
-  	"node":">= 0.4.0"
+  "engines": {
+    "node": ">= 0.4.0"
   },
-  "scripts":{
-    "test":"mocha"
-   },
-  "licenses":{
-  	"type":"MIT",
-  	"url":"https://github.com/stevelacy/gulp-stylus/raw/master/LICENSE"
-  }
+  "scripts": {
+    "test": "mocha"
+  },
+  "licenses": {
+    "type": "MIT",
+    "url": "https://github.com/stevelacy/gulp-stylus/raw/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/stevelacy/gulp-stylus/issues"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "keywords": [
+    "gulp",
+    "stylus",
+    "node.js",
+    "css",
+    "javascript",
+    "preprocessor"
+  ],
+  "license": "MIT"
 }
