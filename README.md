@@ -35,7 +35,10 @@ var stylus = require('gulp-stylus');
 // Get one .styl file and render
 gulp.task('one', function () {
 	gulp.src('./css/one.styl')
-		.pipe(stylus())
+		.pipe(stylus({
+			paths: ["/home/stylus-plugins/"], // only needed in special cases,
+			compress: false
+		}))
 		.pipe(gulp.dest('./css'));
 });
 
