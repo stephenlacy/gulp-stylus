@@ -65,6 +65,8 @@ gulp.task('default', function(){
 
 ```
 
+Options to the stylus stream are passed straight through to the stylus module.
+
 ## Examples
 
 You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
