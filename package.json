@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for Gulp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
@@ -41,7 +41,9 @@
     "node.js",
     "css",
     "javascript",
-    "preprocessor"
+    "preprocessor",
+    "gulpplugin",
+    "gulp-plugin"
   ],
   "license": "MIT"
 }
