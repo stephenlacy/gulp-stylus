@@ -12,7 +12,8 @@
   "dependencies": {
     "stylus": "0.41.x",
     "event-stream": "~3.0.20",
-    "gulp-util": "~1.2.0"
+    "gulp-util": "~1.2.0",
+    "nib": "~1.0.1"
   },
   "devDependencies": {
     "mocha": "*",
