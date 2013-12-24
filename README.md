@@ -68,6 +68,18 @@ gulp.task('default', function(){
 
 ```
 
+## API
+
+
+### stylus(options)  
+
+#### options.use
+Type: `Array`  
+Default: `undefined`  
+
+Array of string representing names of modules which will be used as extensions 
+to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
+
 Options to the stylus stream are passed straight through to the stylus module.
 
 ## Examples
