@@ -16,7 +16,7 @@ module.exports = function (options) {
     s.set('paths', paths.concat([path.dirname(file.path)]));
     
     //trying to load extensions from array passed by user
-    if (options.use && options.use.length > 0){
+    if (options && options.use && options.use.length > 0){
       s.use(function(stylus){
         for (var i = 0, l = options.use.length; i < l; i++){
           try{
