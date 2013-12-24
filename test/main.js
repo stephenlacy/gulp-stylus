@@ -31,7 +31,7 @@ describe('gulpstylus', function(){
 	});
 
 	it ('should uitlize nib when possible', function(done){
-		var stream = stylus();
+		var stream = stylus({use: ['nib']});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',

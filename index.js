@@ -15,10 +15,17 @@ module.exports = function (options) {
     s.set('filename', file.path);
     s.set('paths', paths.concat([path.dirname(file.path)]));
     
-    // Load Nib if available
-    try {
-      s.use(require('nib')());
-    } catch (e) {}
+    //trying to load extensions from array passed by user
+    if (options.use && options.use.length > 0){
+      s.use(function(stylus){
+        for (var i = 0, l = options.use.length; i < l; i++){
+          try{
+            stylus.use(require(options.use[i])());
+          } 
+          catch(e){}
+        }
+      });
+    }
 
     s.render(function(err, css){
       if (err) return cb(err);
