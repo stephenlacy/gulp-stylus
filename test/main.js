@@ -1,6 +1,8 @@
 var should = require('should');
 var gutil = require('gulp-util');
 var stylus = require('../');
+var fs = require('fs');
+var es = require('event-stream');
 
 require('mocha');
 
@@ -24,5 +26,29 @@ describe('gulpstylus', function(){
 			done();
 		});
 		stylusStream.write(fakeFile);
+
+		var stylusStream = stylus();
+	});
+
+	it ('should uitlize nib when possible', function(done){
+		var stream = stylus({use: ['nib']});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/nib-using.styl',
+			contents: fs.readFileSync('test/fixtures/nib-using.styl')
+		});
+
+		stream.on('data', function(newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+			fs.writeFileSync('test/expected/nib-using.css', String(newFile.contents));
+
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/nib-using.css', 'utf8'));
+			done();
+		});
+
+		stream.write(fakeFile);
+		stream.end();
 	});
 });

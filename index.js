@@ -11,10 +11,23 @@ module.exports = function (options) {
     // file is on object passed in by gulp
     // TODO: support streaming files
 
-    opts.filename = file.path;
-    opts.paths = paths.concat([path.dirname(file.path)]);
+    var s = stylus(file.contents.toString('utf8'));
+    s.set('filename', file.path);
+    s.set('paths', paths.concat([path.dirname(file.path)]));
+    
+    //trying to load extensions from array passed by user
+    if (options && options.use && options.use.length > 0){
+      s.use(function(stylus){
+        for (var i = 0, l = options.use.length; i < l; i++){
+          try{
+            stylus.use(require(options.use[i])());
+          } 
+          catch(e){}
+        }
+      });
+    }
 
-    stylus.render(file.contents.toString('utf8'), opts, function(err, css){
+    s.render(function(err, css){
       if (err) return cb(err);
 
       file.path = gutil.replaceExtension(file.path, '.css');
