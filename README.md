@@ -18,7 +18,7 @@ Gulp-Stylus
 </tr>
 <tr>
 <td>Node Version</td>
-<td>>= 0.4</td>
+<td>>= 0.9</td>
 </tr>
 </table>
 
