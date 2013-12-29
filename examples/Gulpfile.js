@@ -1,6 +1,6 @@
 // include the required packages.
 var gulp = require('gulp');
-var stylus = require('gulp-stylus');
+var stylus = require('../');
 
 
 // Get one .styl file and render

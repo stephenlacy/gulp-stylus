@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for Gulp",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
@@ -11,8 +11,8 @@
   "main": "./index.js",
   "dependencies": {
     "stylus": "0.41.x",
-    "event-stream": "~3.0.20",
-    "gulp-util": "~1.2.0",
+    "event-stream": "~3.0.2x",
+    "gulp-util": "2.2.0",
     "nib": "~1.0.1"
   },
   "devDependencies": {
@@ -20,7 +20,7 @@
     "should": "*"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.9.0"
   },
   "scripts": {
     "test": "mocha"

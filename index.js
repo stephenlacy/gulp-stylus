@@ -18,12 +18,12 @@ module.exports = function (options) {
     //trying to load extensions from array passed by user
     if (options && options.use && options.use.length > 0){
       s.use(function(stylus){
-        for (var i = 0, l = options.use.length; i < l; i++){
-          try{
-            stylus.use(require(options.use[i])());
-          } 
-          catch(e){}
+        try{
+          options.use.forEach(function(args){
+            stylus.use(require(args)());
+          });
         }
+        catch(e){}
       });
     }
 
