@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for Gulp",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
@@ -39,9 +39,8 @@
   "keywords": [
     "gulp",
     "stylus",
-    "node.js",
+    "nib",
     "css",
-    "javascript",
     "preprocessor",
     "gulpplugin",
     "gulp-plugin"
