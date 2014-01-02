@@ -10,6 +10,8 @@ module.exports = function (options) {
   function stylusstream (file, cb) {
     // file is on object passed in by gulp
     // TODO: support streaming files
+    if (file.isNull()) return cb(null, file); // pass along
+    if (file.isStream()) return cb(new Error("gulp-stylus: Streaming not supported"));
 
     var s = stylus(file.contents.toString('utf8'));
     s.set('filename', file.path);
