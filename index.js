@@ -1,4 +1,4 @@
-var es = require('event-stream');
+var map = require('map-stream');
 var stylus = require('stylus');
 var gutil = require('gulp-util');
 var path = require('path');
@@ -16,7 +16,7 @@ module.exports = function (options) {
     var s = stylus(file.contents.toString('utf8'));
     s.set('filename', file.path);
     s.set('paths', paths.concat([path.dirname(file.path)]));
-    
+
     //trying to load extensions from array passed by user
     if (options && options.use && options.use.length > 0){
       s.use(function(stylus){
@@ -39,5 +39,5 @@ module.exports = function (options) {
     });
   }
 
-  return es.map(stylusstream);
+  return map(stylusstream);
 };
