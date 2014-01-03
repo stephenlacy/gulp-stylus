@@ -2,7 +2,6 @@ var should = require('should');
 var gutil = require('gulp-util');
 var stylus = require('../');
 var fs = require('fs');
-var es = require('event-stream');
 
 require('mocha');
 
