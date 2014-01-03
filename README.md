@@ -1,9 +1,5 @@
-Gulp-Stylus 
-===========
-
-(gulp-stylus)
-
-
+#Gulp-Stylus
+[![Build Status](https://travis-ci.org/stevelacy/gulp-stylus.png?branch=master)](https://travis-ci.org/stevelacy/gulp-stylus)
 [![NPM version](https://badge.fury.io/js/gulp-stylus.png)](http://badge.fury.io/js/gulp-stylus)
 
 ## Information
@@ -20,9 +16,17 @@ Gulp-Stylus
 <td>Node Version</td>
 <td>>= 0.9</td>
 </tr>
+<tr>
+<td>Gulp Version</td>
+<td>3.x</td>
+</tr>
 </table>
 
 ## Usage
+#### Install
+		npm install gulp-stylus --save
+
+## Examples
 
 ```javascript
 
@@ -67,6 +71,8 @@ gulp.task('default', function(){
 });
 
 ```
+####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
+
 
 ## API
 
@@ -82,9 +88,7 @@ to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
 
-## Examples
 
-You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
 ## LICENSE
 
