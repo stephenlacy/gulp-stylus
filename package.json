@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for Gulp",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
@@ -10,10 +10,10 @@
   "author": "Steve Lacy - slacy.me | Fractal wearefractal.com",
   "main": "./index.js",
   "dependencies": {
-    "stylus": "0.41.x",
-    "map-stream": "0.0.x",
-    "gulp-util": "2.2.0",
-    "nib": "~1.0.1"
+    "stylus": "~0.41.3",
+    "map-stream": "0.0.4",
+    "gulp-util": "~2.2.0",
+    "nib": "~1.0.2"
   },
   "devDependencies": {
     "mocha": "*",

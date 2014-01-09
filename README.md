@@ -1,6 +1,8 @@
-#Gulp-Stylus
+#gulp-stylus
 [![Build Status](https://travis-ci.org/stevelacy/gulp-stylus.png?branch=master)](https://travis-ci.org/stevelacy/gulp-stylus)
 [![NPM version](https://badge.fury.io/js/gulp-stylus.png)](http://badge.fury.io/js/gulp-stylus)
+
+> Compile [Stylus](http://learnboost.github.io/stylus/) with gulp (gulpjs.com)
 
 ## Information
 
