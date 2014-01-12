@@ -18,14 +18,17 @@ module.exports = function (options) {
     s.set('paths', paths.concat([path.dirname(file.path)]));
 
     //trying to load extensions from array passed by user
-    if (options && options.use && options.use.length > 0){
+    if (opts.use && opts.use.length > 0){
       s.use(function(stylus){
-        try{
-          options.use.forEach(function(args){
-            stylus.use(require(args)());
-          });
-        }
-        catch(e){}
+        options.use.forEach(function(args){
+          stylus.use(require(args)());
+        });
+      });
+    }
+
+    if (opts.set && opts.set.length > 0){
+      options.set.forEach(function(args){
+        s.set(args, true);
       });
     }
 

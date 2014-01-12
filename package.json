@@ -23,7 +23,7 @@
     "node": ">= 0.9.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec"
   },
   "licenses": {
     "type": "MIT",
