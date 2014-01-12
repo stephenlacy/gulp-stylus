@@ -31,6 +31,11 @@ module.exports = function (options) {
         s.set(args, true);
       });
     }
+    if (opts.import && opts.import.length > 0){
+      options.import.forEach(function(args){
+        s.import(args);
+      });
+    }
 
     s.render(function(err, css){
       if (err) return cb(err);

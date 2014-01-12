@@ -92,6 +92,12 @@ gulp.task('linenos', function () {
 		.pipe(gulp.dest('./css/linenos'));
 });
 
+// Option import file
+gulp.task('import', function () {
+	gulp.src('./css/test.styl')
+		.pipe(stylus({import: ['./one.styl']})) // the file is Relative to the Other styl files
+		.pipe(gulp.dest('./css/import'));
+});
 
 
 
@@ -137,6 +143,19 @@ Example:
 
 ```
 
+#### options.import
+Type: `Array`  
+Default: `undefined`
+
+Example:
+```javascript
+// stylus.import(['./file.styl']);
+.pipe(stylus({import:['./file.styl']}))
+
+// stylus.import(['./css/*.css']);
+.pipe(stylus({import:['./*.css']}))
+
+```
 
 ## LICENSE
 

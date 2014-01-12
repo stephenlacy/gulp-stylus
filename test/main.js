@@ -52,7 +52,7 @@ describe('gulpstylus', function(){
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
-			path: 'test/fixtures/nib-using.styl',
+			path: 'test/fixtures/normal.styl',
 			contents: fs.readFileSync('test/fixtures/normal.styl')
 		});
 
@@ -61,6 +61,27 @@ describe('gulpstylus', function(){
 			should.exist(newFile.contents);
 
 			String(newFile.contents).should.equal(fs.readFileSync('test/expected/compressed.css', 'utf8'));
+			done();
+		});
+
+		stream.write(fakeFile);
+		stream.end();
+	});
+	
+	it ('should import other .styl files', function(done){
+		var stream = stylus({import: ['one.styl']});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/normal.styl',
+			contents: fs.readFileSync('test/fixtures/normal.styl')
+		});
+
+		stream.on('data', function(newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/imported.css', 'utf8'));
 			done();
 		});
 

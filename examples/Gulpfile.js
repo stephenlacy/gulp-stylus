@@ -18,7 +18,15 @@ gulp.task('one', function () {
 		.pipe(gulp.dest('./css/blue'));
 });
 
+// Get and render recursive stylus files
+gulp.task('stylus', function () {
+	gulp.src('./css/**/*.styl')
+		.pipe(stylus())
+		.pipe(gulp.dest('./css'));
+});
 
+
+// Options
 // Options compress
 gulp.task('compress', function () {
 	gulp.src('./css/compressed/*.styl')
@@ -33,16 +41,12 @@ gulp.task('linenos', function () {
 		.pipe(gulp.dest('./css/linenos'));
 });
 
-
-
-// Get and render recursive stylus files
-gulp.task('stylus', function () {
-	gulp.src('./css/**/*.styl')
-		.pipe(stylus())
-		.pipe(gulp.dest('./css'));
+// Option import file
+gulp.task('import', function () {
+	gulp.src('./css/test.styl')
+		.pipe(stylus({import: ['./one.styl']}))
+		.pipe(gulp.dest('./css/import'));
 });
-
-
 
 
 
