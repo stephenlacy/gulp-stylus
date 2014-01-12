@@ -66,6 +66,37 @@ gulp.task('stylus', function () {
 });
 
 
+// Stylus.use options:
+// Use nib
+gulp.task('nib', function () {
+	gulp.src('./css/nib/*.styl')
+		.pipe(stylus({use: ['nib']}))
+		.pipe(gulp.dest('./css/'));
+});
+// Note: the following must be added to your styl file to include nib:
+// @import 'nib'
+
+
+// Stylus.set options:
+// Option compress
+gulp.task('compress', function () {
+	gulp.src('./css/compressed/*.styl')
+		.pipe(stylus({compress: true}))
+		.pipe(gulp.dest('./css/compressed'));
+});
+
+// Option linenos
+gulp.task('linenos', function () {
+	gulp.src('./css/linenos/*.styl')
+		.pipe(stylus({linenos: true}))
+		.pipe(gulp.dest('./css/linenos'));
+});
+
+
+
+
+
+
 
 // Default gulp task to run
 gulp.task('default', function(){
@@ -90,13 +121,28 @@ to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
 
+Note: the following must be added to your styl file to include nib: `@import 'nib'`
+
+#### options.set
+Type: `Array`  
+Default: `undefined`
+
+Example:
+```javascript
+// stylus.set(['compress': true ]);
+.pipe(stylus({set: ['compressed']}))
+
+// stylus.set(['linenos': true]);
+.pipe(stylus({set: ['linenos']}))
+
+```
 
 
 ## LICENSE
 
 (MIT License)
 
-Copyright (c) 2013 Steve Lacy - Fractal <contact@wearefractal.com> wearefractal.com
+Copyright (c) 2013 Steve Lacy <me@slacy.me> - Fractal <contact@wearefractal.com> wearefractal.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
