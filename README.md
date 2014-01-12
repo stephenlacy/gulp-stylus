@@ -75,6 +75,17 @@ gulp.task('nib', function () {
 });
 // Note: the following must be added to your styl file to include nib:
 // @import 'nib'
+// Or define the import as follows:
+
+//nib usage
+gulp.task('nib', function () {
+	gulp.src('./css/nib/*.styl')
+		.pipe(stylus({
+			use: ['nib'],
+			import: ['nib']
+		}))
+		.pipe(gulp.dest('./css/'));
+});
 
 
 // Stylus.set options:
