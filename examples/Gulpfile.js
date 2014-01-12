@@ -19,6 +19,21 @@ gulp.task('one', function () {
 });
 
 
+// Options compress
+gulp.task('compress', function () {
+	gulp.src('./css/compressed/*.styl')
+		.pipe(stylus({set: ['compress']}))
+		.pipe(gulp.dest('./css/compressed'));
+});
+
+// Options linenos
+gulp.task('linenos', function () {
+	gulp.src('./css/test.styl')
+		.pipe(stylus({set: ['linenos']}))
+		.pipe(gulp.dest('./css/linenos'));
+});
+
+
 
 // Get and render recursive stylus files
 gulp.task('stylus', function () {
