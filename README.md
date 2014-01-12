@@ -81,14 +81,14 @@ gulp.task('nib', function () {
 // Option compress
 gulp.task('compress', function () {
 	gulp.src('./css/compressed/*.styl')
-		.pipe(stylus({compress: true}))
+		.pipe(stylus({set:['compress']}))
 		.pipe(gulp.dest('./css/compressed'));
 });
 
 // Option linenos
 gulp.task('linenos', function () {
 	gulp.src('./css/linenos/*.styl')
-		.pipe(stylus({linenos: true}))
+		.pipe(stylus({set:['linenos']}))
 		.pipe(gulp.dest('./css/linenos'));
 });
 
@@ -136,7 +136,7 @@ Default: `undefined`
 Example:
 ```javascript
 // stylus.set(['compress': true ]);
-.pipe(stylus({set: ['compressed']}))
+.pipe(stylus({set: ['compress']}))
 
 // stylus.set(['linenos': true]);
 .pipe(stylus({set: ['linenos']}))
