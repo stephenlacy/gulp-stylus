@@ -48,21 +48,6 @@ gulp.task('import', function () {
 		.pipe(gulp.dest('./css/import'));
 });
 
-// Options use[]
-// use nib
-gulp.task('nib', function () {
-	gulp.src('./css/test.styl')
-		.pipe(stylus({use: ['nib']}))
-		.pipe(gulp.dest('./css/nib'));
-});
-
-// use axis
-
-gulp.task('axis', function () {
-	gulp.src('./css/test.styl')
-		.pipe(stylus({use: ['axis-css']}))
-		.pipe(gulp.dest('./css/axis'));
-});
 
 
 // Default gulp task to run
