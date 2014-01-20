@@ -43,7 +43,7 @@ gulp.task('one', function () {
 	gulp.src('./css/one.styl')
 		.pipe(stylus({
 			paths: ["/home/stylus-plugins/"], // only needed in special cases,
-			compress: false
+			set:['compress']
 		}))
 		.pipe(gulp.dest('./css'));
 });
