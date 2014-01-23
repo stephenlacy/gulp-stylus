@@ -21,7 +21,8 @@ module.exports = function (options) {
     if (opts.use && opts.use.length > 0){
       s.use(function(stylus){
         options.use.forEach(function(args){
-          stylus.use(require(args)());
+          stylus.use(require(args)())
+          .import(args);
         });
       });
     }
