@@ -73,17 +73,13 @@ gulp.task('nib', function () {
 		.pipe(stylus({use: ['nib']}))
 		.pipe(gulp.dest('./css/'));
 });
-// Note: the following must be added to your styl file to include nib:
-// @import 'nib'
-// Or define the import as follows:
 
-//nib usage
+// Note: 'import:' is no longer needed when using 'use:['nib']' after 0.0.11
+// nib usage
 gulp.task('nib', function () {
 	gulp.src('./css/nib/*.styl')
 		.pipe(stylus({
-			use: ['nib'],
-			import: ['nib']
-		}))
+			use: ['nib']}))
 		.pipe(gulp.dest('./css/'));
 });
 
@@ -138,7 +134,14 @@ to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
 
-Note: the following must be added to your styl file to include nib: `@import 'nib'`
+Note: 'import:' is no longer needed when using 'use:['nib']' after 0.0.11
+Example:
+```javascript
+// stylus.use('nib')
+
+.pipe(stylus({use: ['nib']}))
+```
+
 
 #### options.set
 Type: `Array`  
