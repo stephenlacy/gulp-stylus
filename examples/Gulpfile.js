@@ -48,6 +48,22 @@ gulp.task('import', function () {
 		.pipe(gulp.dest('./css/import'));
 });
 
+// Option import file
+// import nib
+gulp.task('import-nib', function () {
+	gulp.src('./css/nib.styl')
+		.pipe(stylus({import: ['nib']}))
+		.pipe(gulp.dest('./css/import-nib'));
+});
+
+
+// Option use
+// Will also import
+gulp.task('nib', function(){
+	gulp.src('./css/nib.styl')
+	.pipe(stylus({use: ['nib']}))
+	.pipe(gulp.dest('./css/nib/'));
+});
 
 
 // Default gulp task to run
