@@ -106,15 +106,20 @@ gulp.task('import', function () {
 		.pipe(gulp.dest('./css/import'));
 });
 
+// Option urlFunc - inline images
+gulp.task('urlfunc', function(){
+	gulp.src('./css/urlfunc.styl')
+	.pipe(stylus({urlFunc: ['inline-image']}))
+	.pipe(gulp.dest('./css/urlfunc/'));
+});
+
 
 
 
 
 
 // Default gulp task to run
-gulp.task('default', function(){
-	gulp.run('stylus', 'one');
-});
+gulp.task('default', ['stylus', 'one']);
 
 ```
 ####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
