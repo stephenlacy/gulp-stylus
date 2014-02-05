@@ -37,6 +37,11 @@ module.exports = function (options) {
         s.import(args);
       });
     }
+    if (opts.urlFunc && opts.urlFunc.length > 0) {
+      options.urlFunc.forEach(function(args){
+        s.define(args, stylus.url());
+      });
+    }
 
     s.render(function(err, css){
       if (err) return cb(err);
