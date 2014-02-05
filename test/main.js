@@ -108,4 +108,25 @@ describe('gulpstylus', function(){
 		stream.write(fakeFile);
 		stream.end();
 	});
+
+	it ('should compile inline-image files', function(done){
+		var stream = stylus({urlFunc: ['inline-image']});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/urlfunc.styl',
+			contents: new Buffer(fs.readFileSync('test/fixtures/urlfunc.styl'))
+		});
+
+		stream.on('data', function(newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/urlfunc.css', 'utf8'));
+			done();
+		});
+
+		stream.write(fakeFile);
+		stream.end();
+	});
 });
