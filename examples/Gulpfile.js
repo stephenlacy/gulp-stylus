@@ -65,8 +65,13 @@ gulp.task('nib', function(){
 	.pipe(gulp.dest('./css/nib/'));
 });
 
+// Option urlFunc
+gulp.task('urlfunc', function(){
+	gulp.src('./css/urlfunc.styl')
+	.pipe(stylus({urlFunc: ['inline-image']}))
+	.pipe(gulp.dest('./css/urlfunc/'));
+});
+
 
 // Default gulp task to run
-gulp.task('default', function(){
-	gulp.run('stylus', 'one');
-});
+gulp.task('default', ['stylus', 'one']);
