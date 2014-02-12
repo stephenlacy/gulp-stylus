@@ -7,7 +7,7 @@
 ## Information
 
 <table>
-<tr> 
+<tr>
 <td>Package</td><td>gulp-stylus</td>
 </tr>
 <tr>
@@ -58,7 +58,7 @@ gulp.task('one', function () {
 
 
 
-// Get and render all .styl files recursively 
+// Get and render all .styl files recursively
 gulp.task('stylus', function () {
 	gulp.src('./css/**/*.styl')
 		.pipe(stylus())
@@ -113,6 +113,15 @@ gulp.task('urlfunc', function(){
 	.pipe(gulp.dest('./css/urlfunc/'));
 });
 
+// Option define - define variables
+gulp.task('define', function(){
+	gulp.src('./css/define.styl')
+	.pipe(stylus({define: {
+		'ie8': true
+	}}))
+	.pipe(gulp.dest('./css/define/'));
+});
+
 
 
 
@@ -128,13 +137,13 @@ gulp.task('default', ['stylus', 'one']);
 ## API
 
 
-### stylus(options)  
+### stylus(options)
 
 #### options.use
-Type: `Array`  
-Default: `undefined`  
+Type: `Array`
+Default: `undefined`
 
-Array of string representing names of modules which will be used as extensions 
+Array of string representing names of modules which will be used as extensions
 to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
@@ -149,7 +158,7 @@ Example:
 
 
 #### options.set
-Type: `Array`  
+Type: `Array`
 Default: `undefined`
 
 Example:
@@ -163,7 +172,7 @@ Example:
 ```
 
 #### options.import
-Type: `Array`  
+Type: `Array`
 Default: `undefined`
 
 Example:
