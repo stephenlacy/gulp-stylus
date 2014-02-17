@@ -43,6 +43,10 @@ module.exports = function (options) {
       });
     }
 
+    if (path.extname(file.path) === '.css') {
+      return cb(null, file);
+    }
+
     s.render(function(err, css){
       if (err) return cb(err);
 
