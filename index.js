@@ -53,7 +53,13 @@ module.exports = function (options) {
     }
 
     s.render(function(err, css){
-      if (err) return cb(err);
+      if (err) {
+        if (options.continueOnError) {
+          gutil.log('[gulp-stylus] ' + gutil.colors.red(err));
+          return cb();
+        }
+        return cb(new gutil.PluginError('gulp-stylus', err));
+      }
 
       file.path = gutil.replaceExtension(file.path, '.css');
       file.contents = new Buffer(css);
