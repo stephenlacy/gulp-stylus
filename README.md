@@ -185,6 +185,13 @@ Example:
 
 ```
 
+#### options.continueOnError
+Type: `Boolean`
+Default: `undefined`
+
+Use along with `gulp.watch` to prevent gulp from stopping if there is an error
+while compiling your files. Errors are still logged to the console.
+
 ## LICENSE
 
 (MIT License)
