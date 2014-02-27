@@ -99,6 +99,13 @@ gulp.task('linenos', function () {
 		.pipe(gulp.dest('./css/linenos'));
 });
 
+// Option "resolve url" (same as "--resolve-url" in CLI)
+gulp.task('resolve-url', function () {
+	gulp.src('./css/resolve/*.styl')
+		.pipe(stylus({set:['resolve url']}))
+		.pipe(gulp.dest('./css/resolved'));
+});
+
 // Option import file
 gulp.task('import', function () {
 	gulp.src('./css/test.styl')

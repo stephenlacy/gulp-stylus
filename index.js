@@ -28,8 +28,11 @@ module.exports = function (options) {
     }
 
     if (opts.set && opts.set.length > 0){
-      options.set.forEach(function(args){
-        s.set(args, true);
+      options.set.forEach(function(option){
+        s.set(option, true);
+        if (option === 'resolve url') {
+          s.define('url', stylus.resolver());
+        }
       });
     }
     if (opts.import && opts.import.length > 0){

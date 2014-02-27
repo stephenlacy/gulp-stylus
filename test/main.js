@@ -151,6 +151,27 @@ describe('gulpstylus', function(){
 		stream.end();
 	});
 
+	it('should resolve urls', function (done) {
+		var stream = stylus({set: ['resolve url']});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/resolve.styl',
+			contents: new Buffer(fs.readFileSync('test/fixtures/resolve.styl'))
+		});
+
+		stream.on('data', function (newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/resolve.css', 'utf8'));
+			done();
+		});
+
+		stream.write(fakeFile);
+		stream.end();
+	});
+
 	it('should skip css files', function(done){
 		var stylusStream = stylus();
 
