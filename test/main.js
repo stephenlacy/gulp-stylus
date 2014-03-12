@@ -27,7 +27,7 @@ describe('gulpstylus', function(){
 	});
 
 	it ('should uitlize nib when possible', function(done){
-		var stream = stylus({use: ['nib']});
+		var stream = stylus({use: ['nib'], import: ['nib']});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
@@ -40,26 +40,6 @@ describe('gulpstylus', function(){
 			should.exist(newFile.contents);
 
 			String(newFile.contents).should.equal(fs.readFileSync('test/expected/nib-using.css', 'utf8'));
-			done();
-		});
-
-		stream.write(fakeFile);
-		stream.end();
-	});
-
-	it ('should import when .use is defined', function(done){
-		var stream = stylus({use: ['nib']});
-		var fakeFile = new gutil.File({
-			base: 'test/fixtures',
-			cwd: 'test/',
-			path: 'test/fixtures/nib-use-import.styl',
-			contents: fs.readFileSync('test/fixtures/nib-use-import.styl')
-		});
-
-		stream.on('data', function(newFile) {
-			should.exist(newFile);
-			should.exist(newFile.contents);
-			String(newFile.contents).should.equal(fs.readFileSync('test/expected/nib-use-import.css', 'utf8'));
 			done();
 		});
 

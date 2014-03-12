@@ -74,12 +74,14 @@ gulp.task('nib', function () {
 		.pipe(gulp.dest('./css/'));
 });
 
-// Note: 'import:' is no longer needed when using 'use:['nib']' after 0.0.11
+// Note: 'import:' Is Needed after 0.1.0
 // nib usage
 gulp.task('nib', function () {
 	gulp.src('./css/nib/*.styl')
 		.pipe(stylus({
-			use: ['nib']}))
+			use: ['nib'],
+			import: ['nib']
+			}))
 		.pipe(gulp.dest('./css/'));
 });
 
@@ -155,12 +157,12 @@ to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
 
-Note: 'import:' is no longer needed when using 'use:['nib']' after 0.0.11
+Note: 'import:' is REQUIRED after 0.1.0
 Example:
 ```javascript
-// stylus.use('nib')
+// stylus.use('nib').import('nib')
 
-.pipe(stylus({use: ['nib']}))
+.pipe(stylus({use: ['nib'], import: ['nib']}))
 ```
 
 
