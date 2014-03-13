@@ -70,7 +70,9 @@ gulp.task('stylus', function () {
 // Use nib
 gulp.task('nib', function () {
 	gulp.src('./css/nib/*.styl')
-		.pipe(stylus({use: ['nib']}))
+		.pipe(stylus({use: {
+			'nib': { }
+		}}))
 		.pipe(gulp.dest('./css/'));
 });
 
@@ -79,7 +81,9 @@ gulp.task('nib', function () {
 gulp.task('nib', function () {
 	gulp.src('./css/nib/*.styl')
 		.pipe(stylus({
-			use: ['nib'],
+			use: {
+				'nib': { }
+			},
 			import: ['nib']
 			}))
 		.pipe(gulp.dest('./css/'));
@@ -149,11 +153,12 @@ gulp.task('default', ['stylus', 'one']);
 ### stylus(options)
 
 #### options.use
-Type: `Array`
+Type: `Object`
 Default: `undefined`
 
-Array of string representing names of modules which will be used as extensions
-to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
+Object of key-value pairs representing names of modules along with their 
+configuration which will be used as extensions to Stylus (e.g. 'nib'). Modules
+are required inside of the plugin and invoked.
 
 Options to the stylus stream are passed straight through to the stylus module.
 
@@ -162,7 +167,7 @@ Example:
 ```javascript
 // stylus.use('nib').import('nib')
 
-.pipe(stylus({use: ['nib'], import: ['nib']}))
+.pipe(stylus({use: {'nib': { }}, import: ['nib']}))
 ```
 
 
