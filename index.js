@@ -18,11 +18,11 @@ module.exports = function (options) {
     s.set('paths', paths.concat([path.dirname(file.path)]));
 
     //trying to load extensions from array passed by user
-    if (opts.use && opts.use.length > 0){
+    if (opts.use && Object.keys(opts.use).length > 0){
       s.use(function(stylus){
-        options.use.forEach(function(args){
-          stylus.use(require(args)());
-        });
+        for (module in options.use) {
+          stylus.use(require(module)(options.use[module]));
+        }
       });
     }
 
