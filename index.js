@@ -55,7 +55,14 @@ module.exports = function (options) {
     }
 
     s.render(function(err, css){
-      if (err) return cb(err);
+      if (err) {
+        if (opts.handleErrors === true) {
+          gutil.log(err.toString());
+          css = renderErrorInCSS(err.message);
+        } else {
+          return cb(err)
+        }
+      }
 
       file.path = gutil.replaceExtension(file.path, '.css');
       file.contents = new Buffer(css);
@@ -66,3 +73,10 @@ module.exports = function (options) {
 
   return map(stylusstream);
 };
+
+// Helper to take an error message and render it in CSS
+function renderErrorInCSS(errMsg) {
+  var errorStylePrefix = "body:before { font-family: monospace; display: block; white-space: pre-wrap; content:'";
+  var errorStyleSuffix = "'}";
+  return errorStylePrefix + errMsg.replace(/\n/g,"\\A") + errorStyleSuffix
+}
