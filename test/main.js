@@ -171,4 +171,25 @@ describe('gulpstylus', function(){
 		stylusStream.write(fakeFile);
 
 	});
+
+	it('should include normal css files', function(done){
+		var stylusStream = stylus({set: ['include css']});
+
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/include_css.styl',
+			contents: fs.readFileSync('test/fixtures/include_css.styl')
+		});
+
+		stylusStream.once('data', function(newFile){
+			should.exist(newFile);
+			should.exist(newFile.contents);
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/include_css.css', 'utf8'));
+			done();
+		});
+		stylusStream.write(fakeFile);
+
+	});
+
 });
