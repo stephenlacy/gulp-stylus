@@ -101,6 +101,13 @@ gulp.task('linenos', function () {
 		.pipe(gulp.dest('./css/linenos'));
 });
 
+// Option "include css" (same as "--include-css" in CLI)
+gulp.task('includecss', function () {
+	gulp.src('./css/includecss/*.styl')
+		.pipe(stylus({set:['include css']}))
+		.pipe(gulp.dest('./css/includecss'));
+});
+
 // Option "resolve url" (same as "--resolve-url" in CLI)
 gulp.task('resolve-url', function () {
 	gulp.src('./css/resolve/*.styl')
