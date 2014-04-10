@@ -3,6 +3,9 @@ var gutil = require('gulp-util');
 var stylus = require('../');
 var fs = require('fs');
 
+// test plugins
+var nib = require('nib');
+
 require('mocha');
 
 describe('gulpstylus', function(){
@@ -27,7 +30,7 @@ describe('gulpstylus', function(){
 	});
 
 	it ('should uitlize nib when possible', function(done){
-		var stream = stylus({use: ['nib'], import: ['nib']});
+		var stream = stylus({use: nib()});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
@@ -48,7 +51,7 @@ describe('gulpstylus', function(){
 	});
 
 	it ('should compress when called', function(done){
-		var stream = stylus({set: ['compress']});
+		var stream = stylus({compress: true});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
@@ -69,7 +72,7 @@ describe('gulpstylus', function(){
 	});
 
 	it ('should import other .styl files', function(done){
-		var stream = stylus({import: ['one.styl']});
+		var stream = stylus({import: __dirname + '/fixtures/one.styl'});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
@@ -110,48 +113,6 @@ describe('gulpstylus', function(){
 		stream.end();
 	});
 
-	it ('should compile inline-image files', function(done){
-		var stream = stylus({urlFunc: ['inline-image']});
-		var fakeFile = new gutil.File({
-			base: 'test/fixtures',
-			cwd: 'test/',
-			path: 'test/fixtures/urlfunc.styl',
-			contents: new Buffer(fs.readFileSync('test/fixtures/urlfunc.styl'))
-		});
-
-		stream.on('data', function(newFile) {
-			should.exist(newFile);
-			should.exist(newFile.contents);
-
-			String(newFile.contents).should.equal(fs.readFileSync('test/expected/urlfunc.css', 'utf8'));
-			done();
-		});
-
-		stream.write(fakeFile);
-		stream.end();
-	});
-
-	it('should resolve urls', function (done) {
-		var stream = stylus({set: ['resolve url']});
-		var fakeFile = new gutil.File({
-			base: 'test/fixtures',
-			cwd: 'test/',
-			path: 'test/fixtures/resolve.styl',
-			contents: new Buffer(fs.readFileSync('test/fixtures/resolve.styl'))
-		});
-
-		stream.on('data', function (newFile) {
-			should.exist(newFile);
-			should.exist(newFile.contents);
-
-			String(newFile.contents).should.equal(fs.readFileSync('test/expected/resolve.css', 'utf8'));
-			done();
-		});
-
-		stream.write(fakeFile);
-		stream.end();
-	});
-
 	it('should skip css files', function(done){
 		var stylusStream = stylus();
 
@@ -171,25 +132,4 @@ describe('gulpstylus', function(){
 		stylusStream.write(fakeFile);
 
 	});
-
-	it('should include normal css files', function(done){
-		var stylusStream = stylus({set: ['include css']});
-
-		var fakeFile = new gutil.File({
-			base: 'test/fixtures',
-			cwd: 'test/',
-			path: 'test/fixtures/include_css.styl',
-			contents: fs.readFileSync('test/fixtures/include_css.styl')
-		});
-
-		stylusStream.once('data', function(newFile){
-			should.exist(newFile);
-			should.exist(newFile.contents);
-			String(newFile.contents).should.equal(fs.readFileSync('test/expected/include_css.css', 'utf8'));
-			done();
-		});
-		stylusStream.write(fakeFile);
-
-	});
-
 });

@@ -28,6 +28,9 @@
 #### Install
 		npm install gulp-stylus --save
 
+
+#### Version 0.2.0 introduced breaking changes.
+
 ## Examples
 
 ```javascript
@@ -41,22 +44,9 @@ var stylus = require('gulp-stylus');
 // Get one .styl file and render
 gulp.task('one', function () {
 	gulp.src('./css/one.styl')
-		.pipe(stylus({
-			paths: ["/home/stylus-plugins/"], // only needed in special cases,
-			set:['compress']
-		}))
+		.pipe(stylus())
 		.pipe(gulp.dest('./css'));
 });
-
-
-// Get all .styl files in one folder and render
-gulp.task('one', function () {
-	gulp.src('./css/blue/*.styl')
-		.pipe(stylus())
-		.pipe(gulp.dest('./css/blue'));
-});
-
-
 
 // Get and render all .styl files recursively
 gulp.task('stylus', function () {
@@ -66,146 +56,23 @@ gulp.task('stylus', function () {
 });
 
 
-// Stylus.use options:
-// Use nib
-gulp.task('nib', function () {
-	gulp.src('./css/nib/*.styl')
-		.pipe(stylus({use: ['nib']}))
-		.pipe(gulp.dest('./css/'));
-});
-
-// Note: 'import:' Is Needed after 0.1.0
-// nib usage
-gulp.task('nib', function () {
-	gulp.src('./css/nib/*.styl')
-		.pipe(stylus({
-			use: ['nib'],
-			import: ['nib']
-			}))
-		.pipe(gulp.dest('./css/'));
-});
-
-
-// Stylus.set options:
-// Option compress
-gulp.task('compress', function () {
-	gulp.src('./css/compressed/*.styl')
-		.pipe(stylus({set:['compress']}))
-		.pipe(gulp.dest('./css/compressed'));
-});
-
-// Option linenos
-gulp.task('linenos', function () {
-	gulp.src('./css/linenos/*.styl')
-		.pipe(stylus({set:['linenos']}))
-		.pipe(gulp.dest('./css/linenos'));
-});
-
-// Option "include css" (same as "--include-css" in CLI)
-gulp.task('includecss', function () {
-	gulp.src('./css/includecss/*.styl')
-		.pipe(stylus({set:['include css']}))
-		.pipe(gulp.dest('./css/includecss'));
-});
-
-// Option "resolve url" (same as "--resolve-url" in CLI)
-gulp.task('resolve-url', function () {
-	gulp.src('./css/resolve/*.styl')
-		.pipe(stylus({set:['resolve url']}))
-		.pipe(gulp.dest('./css/resolved'));
-});
-
-// Option import file
-gulp.task('import', function () {
-	gulp.src('./css/test.styl')
-		.pipe(stylus({import: ['./one.styl']})) // the file is Relative to the Other styl files
-		.pipe(gulp.dest('./css/import'));
-});
-
-// Option urlFunc - inline images
-gulp.task('urlfunc', function(){
-	gulp.src('./css/urlfunc.styl')
-	.pipe(stylus({urlFunc: ['inline-image']}))
-	.pipe(gulp.dest('./css/urlfunc/'));
-});
-
-// Option define - define variables
-gulp.task('define', function(){
-	gulp.src('./css/define.styl')
-	.pipe(stylus({define: {
-		'ie8': true
-	}}))
-	.pipe(gulp.dest('./css/define/'));
-});
-
-
-
-
-
-
 // Default gulp task to run
 gulp.task('default', ['stylus', 'one']);
 
 ```
+
+#### All options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
+
+
 ####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
 
-## API
-
-
-### stylus(options)
-
-#### options.use
-Type: `Array`
-Default: `undefined`
-
-Array of string representing names of modules which will be used as extensions
-to Stylus (e.g. 'nib'). Modules are required inside of the plugin and invoked.
-
-Options to the stylus stream are passed straight through to the stylus module.
-
-Note: 'import:' is REQUIRED after 0.1.0
-Example:
-```javascript
-// stylus.use('nib').import('nib')
-
-.pipe(stylus({use: ['nib'], import: ['nib']}))
-```
-
-
-#### options.set
-Type: `Array`
-Default: `undefined`
-
-Example:
-```javascript
-// stylus.set(['compress': true ]);
-.pipe(stylus({set: ['compress']}))
-
-// stylus.set(['linenos': true]);
-.pipe(stylus({set: ['linenos']}))
-
-```
-
-#### options.import
-Type: `Array`
-Default: `undefined`
-
-Example:
-```javascript
-// stylus.import(['./file.styl']);
-.pipe(stylus({import:['./file.styl']}))
-
-// stylus.import(['./css/*.css']);
-.pipe(stylus({import:['./*.css']}))
-
-```
 
 ## LICENSE
 
 (MIT License)
 
-Copyright (c) 2013 Steve Lacy <me@slacy.me> - Fractal <contact@wearefractal.com> wearefractal.com
+Copyright (c) 2014 Steve Lacy <me@slacy.me> - Fractal <contact@wearefractal.com> wearefractal.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
