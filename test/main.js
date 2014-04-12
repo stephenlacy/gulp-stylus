@@ -132,24 +132,4 @@ describe('gulpstylus', function(){
 		stylusStream.write(fakeFile);
 
 	});
-
-	it('should set linenos if true', function(done){
-		var stylusStream = stylus({linenos: true});
-
-		var fakeFile = new gutil.File({
-			base: 'test/fixtures',
-			cwd: 'test/',
-			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
-		});
-
-		stylusStream.once('data', function(newFile){
-			should.exist(newFile);
-			should.exist(newFile.contents);
-			String(newFile.contents).should.equal(fs.readFileSync('test/expected/linenos.css', 'utf8'));
-			done();
-		});
-		stylusStream.write(fakeFile);
-
-	});
 });
