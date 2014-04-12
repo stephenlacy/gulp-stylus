@@ -12,6 +12,9 @@ module.exports = function (options) {
     if (file.isStream()) return cb(new Error("gulp-stylus: Streaming not supported"));
     if (path.extname(file.path) === '.css') return cb(null, file);
 
+    if (!opts.filename)
+      opts.filename = file.path;
+
     stylus.render(file.contents.toString('utf8'), opts)
     .catch(function(err){
       if(err) new Error(err);
