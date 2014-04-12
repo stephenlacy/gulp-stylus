@@ -26,5 +26,12 @@ gulp.task('nib', function () {
     .pipe(gulp.dest('./css/nib'));
 });
 
+// Set linenos
+gulp.task('linenos', function () {
+  gulp.src('./css/test.styl')
+    .pipe(stylus({linenos: true}))
+    .pipe(gulp.dest('./css/linenos'));
+});
+
 // Default gulp task to run
 gulp.task('default', ['nib', 'one']);
