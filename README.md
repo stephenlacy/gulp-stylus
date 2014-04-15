@@ -55,6 +55,14 @@ gulp.task('stylus', function () {
 		.pipe(gulp.dest('./css'));
 });
 
+// Use nib
+// either a String or an Array
+gulp.task('nib', function () {
+  gulp.src('./css/nib.styl')
+    .pipe(stylus({use: [nib()]}))
+    .pipe(gulp.dest('./css/nib'));
+});
+
 
 // Default gulp task to run
 gulp.task('default', ['stylus', 'one']);
