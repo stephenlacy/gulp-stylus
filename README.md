@@ -43,19 +43,22 @@ var stylus = require('gulp-stylus');
 
 // Get one .styl file and render
 gulp.task('one', function () {
-	gulp.src('./css/one.styl')
-		.pipe(stylus())
-		.pipe(gulp.dest('./css'));
+  gulp.src('./css/one.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./css'));
 });
 
 // Get and render all .styl files recursively
 gulp.task('stylus', function () {
-	gulp.src('./css/**/*.styl')
-		.pipe(stylus())
-		.pipe(gulp.dest('./css'));
+  gulp.src('./css/**/*.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./css'));
 });
 
+
 // Use nib
+// Require nib
+var nib = require('nib');
 // either a String or an Array
 gulp.task('nib', function () {
   gulp.src('./css/nib.styl')
