@@ -15,16 +15,21 @@ module.exports = function (options) {
     if (!opts.filename)
       opts.filename = file.path;
 
-    stylus.render(file.contents.toString('utf8'), opts)
-    .catch(function(err){
-      if(err) new Error(err);
-    })
-    .done(function(css){
-      file.path = rext(file.path, '.css');
-      file.contents = new Buffer(css);
-      cb(null, file);
-    });
+    // Execute stylus render and handle its errors within a domain
+    var domain = require('domain').create();
 
+    domain.on('error', function(err) {
+      console.log(err.toString()); // Display caught errors safely
+      cb(null);
+    });
+    domain.run(function() {
+      stylus.render(file.contents.toString('utf8'), opts)
+      .done(function(css){
+        file.path = rext(file.path, '.css');
+        file.contents = new Buffer(css);
+        cb(null, file);
+      });
+    });
   }
 
   return map(stylusstream);
