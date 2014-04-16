@@ -132,4 +132,25 @@ describe('gulpstylus', function(){
 		stylusStream.write(fakeFile);
 
 	});
+
+	it('should throw on parse error', function(done) {
+	    var stylusStream = stylus();
+
+	    var file = 'test/fixtures/error.styl';
+
+	    var fakeFile = new gutil.File({
+	        base: 'test/fixtures',
+	        cwd: 'test/',
+	        path: file,
+	        contents: fs.readFileSync(file)
+	    });
+
+        stylusStream.on('error', function(err) {
+            should.exist(err);
+            err.toString().should.match(/ParseError/);
+            done();
+        });
+
+        stylusStream.write(fakeFile);
+    });
 });
