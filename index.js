@@ -17,11 +17,12 @@ module.exports = function (options) {
 
     stylus.render(file.contents.toString('utf8'), opts)
     .catch(function(err){
-      if(err) new Error(err);
+      if(err) cb(new Error(err));
     })
     .done(function(css){
       file.path = rext(file.path, '.css');
-      file.contents = new Buffer(css);
+      //create a 0 length buffer if css is undefined due to some error
+      file.contents = new Buffer(css || 0);
       cb(null, file);
     });
 
