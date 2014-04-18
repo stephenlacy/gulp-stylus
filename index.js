@@ -1,7 +1,9 @@
+var path = require('path');
+
 var map = require('map-stream');
 var stylus = require('accord').load('stylus');
-var rext = require('replace-ext');
-var path = require('path');
+var rext = require('gulp-util').replaceExtension;
+var PluginError = require('gulp-util').PluginError;
 
 module.exports = function (options) {
   var opts = options ? options : {};
@@ -9,7 +11,7 @@ module.exports = function (options) {
   function stylusstream (file, cb) {
 
     if (file.isNull()) return cb(null, file); // pass along
-    if (file.isStream()) return cb(new Error("gulp-stylus: Streaming not supported"));
+    if (file.isStream()) return cb(new PluginError('gulp-stylus', 'Streaming not supported'));
     if (path.extname(file.path) === '.css') return cb(null, file);
 
     if (!opts.filename)
