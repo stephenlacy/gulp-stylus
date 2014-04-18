@@ -1,4 +1,4 @@
-var map = require('map-stream');
+var map = require('through2').obj;
 var stylus = require('accord').load('stylus');
 var rext = require('replace-ext');
 var path = require('path');
@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = function (options) {
   var opts = options ? options : {};
 
-  function stylusstream (file, cb) {
+  function stylusstream (file, enc, cb) {
 
     if (file.isNull()) return cb(null, file); // pass along
     if (file.isStream()) return cb(new Error("gulp-stylus: Streaming not supported"));
