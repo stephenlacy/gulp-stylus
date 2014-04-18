@@ -10,11 +10,11 @@
   "author": "Steve Lacy <me@slacy.me> (http://slacy.me) | Fractal (http://wearefractal.com)",
   "main": "./index.js",
   "dependencies": {
-    "map-stream": "^0.1.0",
     "nib": "^1.0.2",
     "accord": "0.0.9",
     "replace-ext": "0.0.1",
-    "stylus": "^0.43.1"
+    "stylus": "^0.43.1",
+    "through2": "^0.4.1"
   },
   "devDependencies": {
     "gulp-util": "^2.2.14",
