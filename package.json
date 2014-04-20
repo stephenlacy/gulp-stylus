@@ -11,12 +11,16 @@
   "main": "./index.js",
   "dependencies": {
     "map-stream": "^0.1.0",
-    "nib": "^1.0.2",
     "accord": "0.0.9",
-    "replace-ext": "0.0.1",
+    "replace-ext": "0.0.1"
+  },
+  "peerDependencies": {
+    "nib": "^1.0.2",
     "stylus": "^0.43.1"
   },
   "devDependencies": {
+    "nib": "^1.0.2",
+    "stylus": "^0.43.1",
     "gulp-util": "^2.2.14",
     "mocha": "*",
     "should": "*"
