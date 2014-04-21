@@ -10,7 +10,7 @@ require('mocha');
 
 describe('gulpstylus', function(){
 	it('should render stylus .styl to CSS .css', function(done){
-		var stylusStream = stylus();
+		var stream = stylus();
 
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
@@ -19,13 +19,14 @@ describe('gulpstylus', function(){
 			contents: fs.readFileSync('test/fixtures/normal.styl')
 		});
 
-		stylusStream.once('data', function(newFile){
+		stream.once('data', function(newFile){
 			should.exist(newFile);
 			should.exist(newFile.contents);
 			String(newFile.contents).should.equal(fs.readFileSync('test/expected/normal.css', 'utf8'));
 			done();
 		});
-		stylusStream.write(fakeFile);
+		stream.write(fakeFile);
+		stream.end();
 
 	});
 
@@ -114,7 +115,7 @@ describe('gulpstylus', function(){
 	});
 
 	it('should skip css files', function(done){
-		var stylusStream = stylus();
+		var stream = stylus();
 
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
@@ -123,34 +124,36 @@ describe('gulpstylus', function(){
 			contents: fs.readFileSync('test/fixtures/ie8.css')
 		});
 
-		stylusStream.once('data', function(newFile){
+		stream.once('data', function(newFile){
 			should.exist(newFile);
 			should.exist(newFile.contents);
 			String(newFile.contents).should.equal(fs.readFileSync('test/fixtures/ie8.css', 'utf8'));
 			done();
 		});
-		stylusStream.write(fakeFile);
+		stream.write(fakeFile);
+		stream.end();
 
 	});
 
 	it('should throw on parse error', function(done) {
-	    var stylusStream = stylus();
+		var stream = stylus();
 
-	    var file = 'test/fixtures/error.styl';
+		var file = 'test/fixtures/error.styl';
 
-	    var fakeFile = new gutil.File({
-	        base: 'test/fixtures',
-	        cwd: 'test/',
-	        path: file,
-	        contents: fs.readFileSync(file)
-	    });
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: file,
+			contents: fs.readFileSync(file)
+		});
 
-        stylusStream.on('error', function(err) {
-            should.exist(err);
-            err.toString().should.match(/ParseError/);
-            done();
-        });
-
-        stylusStream.write(fakeFile);
+		stream.on('error', function(err) {
+			should.exist(err);
+			err.toString().should.match(/ParseError/);
+			done();
+		});
+    stream.write(fakeFile);
+    stream.end();
+    
     });
 });
