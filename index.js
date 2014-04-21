@@ -6,7 +6,8 @@ var path = require('path');
 
 module.exports = function (options) {
   var opts = options ? options : {};
-
+  var paths = opts.paths ? opts.paths : [];
+  
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) return cb(new gutil.PluginError("gulp-stylus: Streaming not supported"));
@@ -19,6 +20,7 @@ module.exports = function (options) {
       return cb();
     }
     if (!opts.filename) opts.filename = file.path;
+    if (!opts.paths) opts.paths = paths.concat([path.dirname(file.path)]);
 
     that = this;
     stylus.render(file.contents.toString('utf8'), opts)
