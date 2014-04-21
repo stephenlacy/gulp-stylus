@@ -30,7 +30,7 @@ describe('gulpstylus', function(){
 
 	});
 
-	it ('should uitlize nib when possible', function(done){
+	it ('should utilize nib when possible', function(done){
 		var stream = stylus({use: nib()});
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
@@ -135,7 +135,7 @@ describe('gulpstylus', function(){
 
 	});
 
-	it('should throw on parse error', function(done) {
+	it('should throw on parse error', function(done){
 		var stream = stylus();
 
 		var file = 'test/fixtures/error.styl';
@@ -155,5 +155,24 @@ describe('gulpstylus', function(){
     stream.write(fakeFile);
     stream.end();
     
-    });
+  });
+
+	it ('should import nested and reverse recursive files', function(done){
+		var stream = stylus({use: nib()});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/includes/import.styl',
+			contents: fs.readFileSync('/www/node/gulp-stylus/test/fixtures/includes/import.styl')
+		});
+
+		stream.on('data', function(newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+			String(newFile.contents).should.equal(fs.readFileSync('/www/node/gulp-stylus/test/expected/import.css', 'utf8'));
+			done();
+		});
+		stream.write(fakeFile);
+		stream.end();
+	});
 });
