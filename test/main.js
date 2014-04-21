@@ -163,7 +163,7 @@ describe('gulpstylus', function(){
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/includes/import.styl',
-			contents: fs.readFileSync('/www/node/gulp-stylus/test/fixtures/includes/import.styl')
+			contents: fs.readFileSync('test/fixtures/includes/import.styl')
 		});
 
 		stream.on('data', function(newFile) {
