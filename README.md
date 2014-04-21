@@ -12,7 +12,7 @@
 </tr>
 <tr>
 <td>Description</td>
-<td>Stylus plugin for Gulp</td>
+<td>Stylus plugin for gulp</td>
 </tr>
 <tr>
 <td>Node Version</td>
@@ -66,13 +66,44 @@ gulp.task('nib', function () {
     .pipe(gulp.dest('./css/nib'));
 });
 
+// Show errors if encountered
+gulp.task('errors', function () {
+  gulp.src('./css/errors.styl')
+    .pipe(stylus({errors: true}))
+    .pipe(gulp.dest('./css'));
+});
+
 
 // Default gulp task to run
 gulp.task('default', ['stylus', 'one']);
 
 ```
 
-#### All options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
+## Options
+#### All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
+
+### errors
+Show errors in the CLI when encountered
+
+    default: false
+
+```js
+
+.pipe(stylus({errors: true}))
+
+```    
+
+### filename
+The name of the file if required to be set
+
+    default: file.path
+
+```js
+
+.pipe(stylus({filename: "main.styl"}))
+
+```
+
 
 
 ####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
