@@ -169,7 +169,7 @@ describe('gulpstylus', function(){
 		stream.on('data', function(newFile) {
 			should.exist(newFile);
 			should.exist(newFile.contents);
-			String(newFile.contents).should.equal(fs.readFileSync('/www/node/gulp-stylus/test/expected/import.css', 'utf8'));
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/import.css', 'utf8'));
 			done();
 		});
 		stream.write(fakeFile);
