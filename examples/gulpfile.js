@@ -33,5 +33,13 @@ gulp.task('linenos', function () {
     .pipe(gulp.dest('./css/linenos'));
 });
 
+// Show errors if encountered
+gulp.task('errors', function () {
+  gulp.src('./css/errors.styl')
+    .pipe(stylus({errors: true}))
+    .pipe(gulp.dest('./css/errors'));
+});
+
+
 // Default gulp task to run
 gulp.task('default', ['nib', 'one']);
