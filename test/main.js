@@ -8,7 +8,7 @@ var nib = require('nib');
 
 require('mocha');
 
-describe('gulpstylus', function(){
+describe('gulp-stylus', function(){
 	it('should render stylus .styl to CSS .css', function(done){
 		var stream = stylus();
 
