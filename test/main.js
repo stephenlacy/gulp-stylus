@@ -135,6 +135,7 @@ describe('gulp-stylus', function(){
 
 	});
 
+
 	it('should throw on parse error', function(done){
 		var stream = stylus();
 
@@ -149,7 +150,7 @@ describe('gulp-stylus', function(){
 
 		stream.on('error', function(err) {
 			should.exist(err);
-			err.toString().should.match(/ParseError/);
+			err.name.toString().should.match(/ParseError/);
 			done();
 		});
     stream.write(fakeFile);
@@ -162,8 +163,8 @@ describe('gulp-stylus', function(){
 		var fakeFile = new gutil.File({
 			base: 'test/fixtures',
 			cwd: 'test/',
-			path: 'test/fixtures/includes/import.styl',
-			contents: fs.readFileSync('test/fixtures/includes/import.styl')
+			path: 'test/fixtures/import.styl',
+			contents: fs.readFileSync('test/fixtures/import.styl')
 		});
 
 		stream.on('data', function(newFile) {
@@ -175,4 +176,5 @@ describe('gulp-stylus', function(){
 		stream.write(fakeFile);
 		stream.end();
 	});
+
 });

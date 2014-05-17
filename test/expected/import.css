@@ -8,18 +8,6 @@
   background: linear-gradient(top, #555 0%, #000 100%);
   filter: unquite("progid:DXImageTransform.Microsoft.gradient( startColorstr='#555', endColorstr='#000',GradientType=0 )");
 }
-body {
-  width: 100%;
-  height: 10%;
-}
-div {
-  background: #555;
-}
-div:hover {
-  background: #000;
-}
-#back-to-top {
-  position: fixed;
-  bottom: 0;
-  right: 0;
+.logo {
+  background-image: url("../gulp.png");
 }
