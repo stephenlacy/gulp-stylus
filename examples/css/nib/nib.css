@@ -1,6 +1,12 @@
 #back-to-top {
-  fixed: bottom right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 body {
-  background: linear-gradient(top, #fff, #000);
+  background: -webkit-linear-gradient(top, #fff, #000);
+  background: -moz-linear-gradient(top, #fff, #000);
+  background: -o-linear-gradient(top, #fff, #000);
+  background: -ms-linear-gradient(top, #fff, #000);
+  background: linear-gradient(to bottom, #fff, #000);
 }
