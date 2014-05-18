@@ -29,6 +29,7 @@ module.exports = function (options) {
         if(opts.errors) gutil.log('gulp-stylus', gutil.colors.cyan(err));
         that.emit('error', new gutil.PluginError('gulp-stylus', err));
       }
+      cb(err);
     })
     .then(function(css){
       file.path = rext(file.path, '.css');
