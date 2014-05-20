@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var nib = require('nib');
 var stylus = require('../');
 
-
 // Get one .styl file and render
 gulp.task('one', function () {
 	gulp.src('./css/one.styl')
@@ -40,6 +39,12 @@ gulp.task('errors', function () {
     .pipe(gulp.dest('./css/errors'));
 });
 
+// Define a variable
+gulp.task('define', function () {
+  gulp.src('./css/define.styl')
+    .pipe(stylus({define: { color: 'red' }}))
+    .pipe(gulp.dest('./css/define'));
+});
 
 // Default gulp task to run
 gulp.task('default', ['nib', 'one']);
