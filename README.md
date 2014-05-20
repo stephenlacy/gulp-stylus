@@ -104,7 +104,16 @@ The name of the file if required to be set
 
 ```
 
+### define
+Allows you to define global variables in gulp that will be accessible in your Stylus files.
 
+	default: {}
+
+```js
+
+.pipe(stylus({ define: { color: 'blue' } }))
+
+```  
 
 ####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
