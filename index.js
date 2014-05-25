@@ -7,7 +7,7 @@ var path = require('path');
 module.exports = function (options) {
   var opts = options ? options : {};
   var paths = opts.paths ? opts.paths : [];
-  
+
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) return cb(new gutil.PluginError("gulp-stylus: Streaming not supported"));
@@ -28,6 +28,7 @@ module.exports = function (options) {
       if(err){
         if(opts.errors) gutil.log('gulp-stylus', gutil.colors.cyan(err));
         that.emit('error', new gutil.PluginError('gulp-stylus', err));
+        cb();
       }
     })
     .then(function(css){
