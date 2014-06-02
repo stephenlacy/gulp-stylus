@@ -27,7 +27,7 @@ module.exports = function (options) {
     .catch(function(err){
       if(err){
         if(opts.errors) gutil.log('gulp-stylus', gutil.colors.cyan(err));
-        that.emit('error', new gutil.PluginError('gulp-stylus', err));
+        else that.emit('error', new gutil.PluginError('gulp-stylus', err));
       }
     })
     .then(function(css){
