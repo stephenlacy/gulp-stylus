@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for Gulp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
