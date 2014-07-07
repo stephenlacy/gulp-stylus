@@ -11,3 +11,18 @@
 .logo {
   background-image: url("../gulp.png");
 }
+body {
+  width: 100%;
+  height: 10%;
+}
+div {
+  background: #555;
+}
+div:hover {
+  background: #000;
+}
+#back-to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
