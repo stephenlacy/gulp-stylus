@@ -19,7 +19,7 @@ module.exports = function (options) {
       this.push(file);
       return cb();
     }
-    if (!opts.filename) opts.filename = file.path;
+    opts.filename = file.path;
     if (!opts.paths) opts.paths = paths.concat([path.dirname(file.path)]);
 
     that = this;
