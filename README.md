@@ -25,9 +25,12 @@
 </table>
 
 ## Usage
-#### Install
-		npm install gulp-stylus --save
 
+#### Install
+
+```sh
+$ npm install --save-dev gulp-stylus
+```
 
 #### Version 0.2.0 introduced breaking changes.
 
