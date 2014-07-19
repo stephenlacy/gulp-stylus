@@ -83,7 +83,31 @@ gulp.task('default', ['stylus', 'one']);
 ```
 
 ## Options
-#### All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
+
+All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md).
+Please refer to that documentation for more in-depth information.
+
+### include
+An array of strings with additional paths that Stylus can `@import` from. 
+
+```js
+.pipe(stylus({ include: [ __dirname + '/node_modules' ] }))
+```
+
+### import
+An array of strings with paths. All Stylus files found in those paths will be imported automatically.
+
+```js
+.pipe(stylus({ import: [ __dirname + '/app/css/mixins' ] }))
+```
+
+### use
+Defines Stylus plugins that will be used. Use an array for multiple items.
+
+```js
+.pipe(stylus({ use: require('nib')() })
+.pipe(stylus({ use: [ require('nib')(), require('axis-css')() ] })
+```
 
 ### errors
 Show errors in the CLI when encountered
