@@ -8,38 +8,31 @@ var stylus = require('../');
 gulp.task('one', function () {
 	gulp.src('./css/one.styl')
 		.pipe(stylus())
-		.pipe(gulp.dest('./css'));
+		.pipe(gulp.dest('./css/build'));
 });
 
 // Options
 // Options compress
 gulp.task('compress', function () {
-	gulp.src('./css/compressed/*.styl')
+	gulp.src('./css/*.styl')
 		.pipe(stylus({compress: true}))
-		.pipe(gulp.dest('./css/compressed'));
+		.pipe(gulp.dest('./css/build'));
 });
 
 // Use nib
 gulp.task('nib', function () {
   gulp.src('./css/nib.styl')
     .pipe(stylus({use: [nib()]}))
-    .pipe(gulp.dest('./css/nib'));
+    .pipe(gulp.dest('./css/build'));
 });
 
 // Set linenos
 gulp.task('linenos', function () {
-  gulp.src('./css/test.styl')
+  gulp.src('./css/linenos.styl')
     .pipe(stylus({linenos: true}))
-    .pipe(gulp.dest('./css/linenos'));
-});
-
-// Show errors if encountered
-gulp.task('errors', function () {
-  gulp.src('./css/errors.styl')
-    .pipe(stylus({errors: true}))
-    .pipe(gulp.dest('./css/errors'));
+    .pipe(gulp.dest('./css/build'));
 });
 
 
 // Default gulp task to run
-gulp.task('default', ['nib', 'one']);
+gulp.task('default', ['nib', 'one', 'linenos']);
