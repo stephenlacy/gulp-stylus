@@ -155,7 +155,7 @@ describe('gulp-stylus', function(){
 		});
     stream.write(fakeFile);
     stream.end();
-    
+
   });
 
 	it ('should import nested and reverse recursive files', function(done){
