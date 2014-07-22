@@ -12,8 +12,6 @@
   "dependencies": {
     "accord": "^0.11.1",
     "gulp-util": "^2.2.20",
-    "lodash.clone": "^2.4.1",
-    "nib": "*",
     "replace-ext": "0.0.1",
     "stylus": "*",
     "through2": "^0.5.1"
