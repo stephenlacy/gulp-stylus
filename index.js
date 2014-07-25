@@ -25,10 +25,11 @@ module.exports = function (options) {
       return cb(new gutil.PluginError('gulp-stylus', err));
     })
     .then(function(css){
-      if (!css) return cb();
-      file.path = rext(file.path, '.css');
-      file.contents = new Buffer(css);
-      return cb(null, file);
+      if (css !== undefined){
+        file.path = rext(file.path, '.css');
+        file.contents = new Buffer(css);
+        return cb(null, file);
+      }
     });
   });
 
