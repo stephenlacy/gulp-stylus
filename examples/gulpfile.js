@@ -15,7 +15,7 @@ gulp.task('one', function () {
 // Options compress
 gulp.task('compress', function () {
 	gulp.src('./css/*.styl')
-		.pipe(stylus({compress: true}))
+		.pipe(stylus({compress: true, use: nib()}))
 		.pipe(gulp.dest('./css/build'));
 });
 
