@@ -85,7 +85,7 @@ gulp.task('default', ['stylus', 'one']);
 
 (MIT License)
 
-Copyright (c) 2014 Steve Lacy <me@slacy.me> - Fractal <contact@wearefractal.com> wearefractal.com
+Copyright (c) 2014 Steve Lacy <me@slacy.me> [slacy.me](http://slacy.me)- Fractal <contact@wearefractal.com> [wearefractal.com](http://wearefractal.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
