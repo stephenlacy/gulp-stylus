@@ -67,6 +67,16 @@ gulp.task('nib', function () {
     .pipe(gulp.dest('./css/nib'));
 });
 
+
+// Use inline sourcemaps
+gulp.task('sourcemaps', function () {
+  gulp.src('./css/**/*.styl')
+    .pipe(stylus({
+      sourcemap: {inline: true}
+    }))
+    .pipe(gulp.dest('./css/sourcemaps'));
+});
+
 // Default gulp task to run
 gulp.task('default', ['stylus', 'one']);
 
