@@ -154,4 +154,23 @@ describe('gulp-stylus', function(){
 		stream.end();
 	});
 
+	it ('should create inline sourcemaps', function(done){
+		var stream = stylus({sourcemap: {inline: true}});
+		var fakeFile = new gutil.File({
+			base: 'test/fixtures',
+			cwd: 'test/',
+			path: 'test/fixtures/normal.styl',
+			contents: fs.readFileSync('test/fixtures/normal.styl')
+		});
+
+		stream.on('data', function(newFile) {
+			should.exist(newFile);
+			should.exist(newFile.contents);
+			String(newFile.contents).should.equal(fs.readFileSync('test/expected/sourcemap.css', 'utf8'));
+			done();
+		});
+		stream.write(fakeFile);
+		stream.end();
+	});
+
 });
