@@ -1,0 +1,11 @@
+body {
+  width: 100%;
+  height: 10%;
+}
+div {
+  background: #555;
+}
+div:hover {
+  background: #000;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvbm9ybWFsLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxPQUFNLEtBQU47RUFDQSxRQUFRLElBQVI7O0FBQ0Y7RUFDRSxZQUFXLEtBQVg7O0FBQ0E7RUFDRSxZQUFXLEtBQVgiLCJmaWxlIjoibm9ybWFsLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImdyZXkgPSAjNTU1XG5ibGFjayA9ICMwMDBcblxuYm9keVxuICB3aWR0aCAxMDAlXG4gIGhlaWdodDogMTAlO1xuZGl2XG4gIGJhY2tncm91bmQgZ3JleVxuICAmOmhvdmVyXG4gICAgYmFja2dyb3VuZCBibGFjayJdfQ== */
