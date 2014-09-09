@@ -1,8 +1,9 @@
+'use strict';
+
 var should = require('should');
 var gutil = require('gulp-util');
 var stylus = require('../');
 var fs = require('fs');
-
 
 require('mocha');
 

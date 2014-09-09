@@ -1,6 +1,8 @@
+'use strict';
+
 var through = require('through2');
 var stylus = require('accord').load('stylus');
-var gutil = require("gulp-util");
+var gutil = require('gulp-util');
 var rext = require('replace-ext');
 var path = require('path');
 
@@ -10,7 +12,9 @@ module.exports = function (options) {
 
   return through.obj(function (file, enc, cb) {
 
-    if (file.isStream()) return cb(new gutil.PluginError("gulp-stylus: Streaming not supported"));
+    if (file.isStream()) {
+      return cb(new gutil.PluginError('gulp-stylus: Streaming not supported'));
+    }
     if (file.isNull()){
       return cb(null, file);
     }
