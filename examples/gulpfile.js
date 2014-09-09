@@ -1,8 +1,12 @@
 // include the required packages.
 var gulp = require('gulp');
-var nib = require('nib');
 var stylus = require('../');
 
+// include, if you're going to use nib helper library
+var nib = require('nib');
+
+// include, if you want to work with sourcemaps
+var sourcemaps = require('gulp-sourcemaps');
 
 // Get one .styl file and render
 gulp.task('one', function () {
@@ -36,6 +40,45 @@ gulp.task('linenos', function () {
     .pipe(gulp.dest('./css/build'));
 });
 
+// Inline sourcemaps
+gulp.task('sourcemaps-inline', function () {
+  gulp.src('./css/sourcemaps-inline.styl')
+    .pipe(stylus({
+      sourcemap: {
+        inline: true,
+        sourceRoot: '..',
+        basePath: 'css'
+      }
+    }))
+    .pipe(gulp.dest('./css/build'));
+});
+
+// External sourcemaps
+gulp.task('sourcemaps-external', function () {
+  gulp.src('./css/sourcemaps-external.styl')
+    .pipe(stylus({
+      sourcemap: {
+        inline: true,
+        sourceRoot: '.',
+        basePath: 'css/build'
+      }
+    }))
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
+    // Here you can you can use plugins that supports gulp-sourcemaps.
+    // See gulp-sourcemaps readme for a list of such plugins.
+    // For example, using pleeease:
+    // .pipe(pleeease({
+    //   minifier: false,
+    //   sourcemaps: true
+    // }))
+    .pipe(sourcemaps.write('.', {
+      includeConent: false,
+      sourceRoot: '.'
+    }))
+    .pipe(gulp.dest('./css/build'));
+});
 
 // Default gulp task to run
-gulp.task('default', ['nib', 'one', 'linenos']);
+gulp.task('default', ['one', 'compress', 'nib', 'linenos', 'sourcemaps-inline', 'sourcemaps-external']);
