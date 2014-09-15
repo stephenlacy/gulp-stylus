@@ -1,3 +1,5 @@
+'use strict';
+
 // include the required packages.
 var gulp = require('gulp');
 var stylus = require('../');
