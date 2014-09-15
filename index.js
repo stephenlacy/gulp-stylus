@@ -1,14 +1,18 @@
 'use strict';
 
 var through = require('through2');
-var stylus = require('accord').load('stylus');
-var gutil = require('gulp-util');
-var rext = require('replace-ext');
-var path = require('path');
+var stylus  = require('accord').load('stylus');
+var gutil   = require('gulp-util');
+var rext    = require('replace-ext');
+var path    = require('path');
+var _       = require('lodash');
 
 module.exports = function (options) {
-  var opts = options ? options : {};
-  opts.paths = opts.paths ? opts.paths : [];
+  var opts = _.cloneDeep(options) || {};
+
+  _.defaults(opts, {
+    paths: []
+  });
 
   return through.obj(function (file, enc, cb) {
 
