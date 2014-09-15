@@ -6,6 +6,8 @@ var gutil = require('gulp-util');
 var rext = require('replace-ext');
 var path = require('path');
 
+var PLUGIN_NAME = 'gulp-stylus';
+
 module.exports = function (options) {
   var opts = options ? options : {};
   opts.paths = opts.paths ? opts.paths : [];
@@ -13,7 +15,7 @@ module.exports = function (options) {
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) {
-      return cb(new gutil.PluginError('gulp-stylus: Streaming not supported'));
+      return cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
     }
     if (file.isNull()){
       return cb(null, file);
@@ -26,7 +28,7 @@ module.exports = function (options) {
 
     stylus.render(file.contents.toString('utf8'), opts)
     .catch(function(err){
-      return cb(new gutil.PluginError('gulp-stylus', err));
+      return cb(new gutil.PluginError(PLUGIN_NAME, err));
     })
     .then(function(css){
       if (css !== undefined){
