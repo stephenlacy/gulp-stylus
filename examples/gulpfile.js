@@ -2,7 +2,7 @@
 
 // include the required packages.
 var gulp = require('gulp');
-var stylus = require('../');
+var stylus = require('gulp-stylus');
 
 // include, if you're going to use nib helper library
 var nib = require('nib');
