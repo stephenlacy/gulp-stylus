@@ -112,7 +112,7 @@ gulp.task('sourcemaps-external', function () {
     //   sourcemaps: true
     // }))
     .pipe(sourcemaps.write('.', {
-      includeConent: false,
+      includeContent: false,
       sourceRoot: '.'
     }))
     .pipe(gulp.dest('./css/build'));
