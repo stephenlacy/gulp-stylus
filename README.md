@@ -91,19 +91,11 @@ gulp.task('sourcemaps-inline', function () {
     .pipe(gulp.dest('./css/build'));
 });
 
-// External sourcemaps
+// Using gulp-sourcemaps
 gulp.task('sourcemaps-external', function () {
   gulp.src('./css/sourcemaps-external.styl')
-    .pipe(stylus({
-      sourcemap: {
-        inline: true,
-        sourceRoot: '.',
-        basePath: 'css/build'
-      }
-    }))
-    .pipe(sourcemaps.init({
-      loadMaps: true
-    }))
+    .pipe(sourcemaps.init())
+    .pipe(stylus()) // automatically enabled
     // Here you can you can use plugins that supports gulp-sourcemaps.
     // See gulp-sourcemaps readme for a list of such plugins.
     // For example, using pleeease:
@@ -111,11 +103,8 @@ gulp.task('sourcemaps-external', function () {
     //   minifier: false,
     //   sourcemaps: true
     // }))
-    .pipe(sourcemaps.write('.', {
-      includeContent: false,
-      sourceRoot: '.'
-    }))
-    .pipe(gulp.dest('./css/build'));
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./css/build')); // outputs both sourcemaps-external.css & sourcemaps-external.css.map
 });
 
 // Default gulp task to run
@@ -126,7 +115,7 @@ gulp.task('default', ['one', 'compress', 'nib', 'linenos', 'sourcemaps-inline', 
 #####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
 ## Options
-#### All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
+#### All stylus options are handled exactly as [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
 
 
 
