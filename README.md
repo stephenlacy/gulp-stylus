@@ -123,4 +123,4 @@ gulp.task('default', ['one', 'compress', 'nib', 'linenos', 'sourcemaps-inline', 
 
 
 
-## LICENSE [MIT](LICENSE.md)
+## LICENSE [MIT](LICENSE)
