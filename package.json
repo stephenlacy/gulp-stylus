@@ -1,7 +1,7 @@
 {
   "name": "gulp-stylus",
   "description": "Stylus plugin for gulp",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "homepage": "http://github.com/stevelacy/gulp-stylus",
   "repository": {
     "type": "git",
@@ -12,10 +12,10 @@
   "dependencies": {
     "accord": "^0.12.0",
     "gulp-util": "^3.0.1",
+    "lodash": "^2.4.1",
     "replace-ext": "0.0.1",
-    "stylus": "*",
-    "through2": "^0.6.1",
-    "lodash": "~2.4.1"
+    "stylus": "^0.49.2",
+    "through2": "^0.6.3"
   },
   "devDependencies": {
     "mocha": "*",
