@@ -68,13 +68,6 @@ gulp.task('sourcemaps-external', function () {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    // Here you can you can use plugins that supports gulp-sourcemaps.
-    // See gulp-sourcemaps readme for a list of such plugins.
-    // For example, using pleeease:
-    // .pipe(pleeease({
-    //   minifier: false,
-    //   sourcemaps: true
-    // }))
     .pipe(sourcemaps.write('.', {
       includeConent: false,
       sourceRoot: '.'
