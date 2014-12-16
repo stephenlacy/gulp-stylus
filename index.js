@@ -10,11 +10,11 @@ var _       = require('lodash');
 var PLUGIN_NAME = 'gulp-stylus';
 
 module.exports = function (options) {
-  var opts = _.cloneDeep(options) || {};
-
-  _.defaults(opts, {
+  var defaults = {
     paths: []
-  });
+  };
+
+  var opts = _.assign(defaults, options);
 
   return through.obj(function (file, enc, cb) {
 
