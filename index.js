@@ -13,8 +13,9 @@ module.exports = function (options) {
   var defaults = {
     paths: []
   };
-
   var opts = _.assign(defaults, options);
+  // We mutate paths, so make sure any changes in here aren't trickling out.
+  opts.paths = opts.paths.slice()
 
   return through.obj(function (file, enc, cb) {
 
