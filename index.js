@@ -12,10 +12,6 @@ var PLUGIN_NAME = 'gulp-stylus';
 module.exports = function (options) {
   var opts = _.cloneDeep(options) || {};
 
-  _.defaults(opts, {
-    paths: []
-  });
-
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) {
@@ -28,7 +24,6 @@ module.exports = function (options) {
       return cb(null, file);
     }
     opts.filename = file.path;
-    opts.paths.push(path.dirname(file.path));
 
     stylus.render(file.contents.toString('utf8'), opts)
     .catch(function(err){
