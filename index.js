@@ -32,7 +32,7 @@ module.exports = function (options) {
     .then(function(css){
       if (css !== undefined){
         file.path = rext(file.path, '.css');
-        file.contents = new Buffer(css);
+        file.contents = new Buffer(css.result);
         return cb(null, file);
       }
     });
