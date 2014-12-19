@@ -10,12 +10,7 @@ var _       = require('lodash');
 var PLUGIN_NAME = 'gulp-stylus';
 
 module.exports = function (options) {
-  var defaults = {
-    paths: []
-  };
-  var opts = _.assign(defaults, options);
-  // We mutate paths, so make sure any changes in here aren't trickling out.
-  opts.paths = opts.paths.slice()
+  var opts = _.assign({}, options);
 
   return through.obj(function (file, enc, cb) {
 
@@ -29,7 +24,6 @@ module.exports = function (options) {
       return cb(null, file);
     }
     opts.filename = file.path;
-    opts.paths.push(path.dirname(file.path));
 
     stylus.render(file.contents.toString('utf8'), opts)
     .catch(function(err){
