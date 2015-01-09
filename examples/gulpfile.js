@@ -45,33 +45,18 @@ gulp.task('linenos', function () {
 // Inline sourcemaps
 gulp.task('sourcemaps-inline', function () {
   gulp.src('./css/sourcemaps-inline.styl')
-    .pipe(stylus({
-      sourcemap: {
-        inline: true,
-        sourceRoot: '..',
-        basePath: 'css'
-      }
-    }))
+    .pipe(sourcemaps.init())
+    .pipe(stylus({ sourcemap: true }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css/build'));
 });
 
 // External sourcemaps
 gulp.task('sourcemaps-external', function () {
   gulp.src('./css/sourcemaps-external.styl')
-    .pipe(stylus({
-      sourcemap: {
-        inline: true,
-        sourceRoot: '.',
-        basePath: 'css/build'
-      }
-    }))
-    .pipe(sourcemaps.init({
-      loadMaps: true
-    }))
-    .pipe(sourcemaps.write('.', {
-      includeConent: false,
-      sourceRoot: '.'
-    }))
+    .pipe(sourcemaps.init())
+    .pipe(stylus({ sourcemap: true }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./css/build'));
 });
 

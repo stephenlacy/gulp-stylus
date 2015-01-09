@@ -11,16 +11,19 @@
   "main": "./index.js",
   "dependencies": {
     "accord": "0.14.x",
-    "gulp-util": "^3.0.1",
-    "lodash": "^2.4.1",
+    "gulp-util": "3.x",
+    "lodash": "2.x",
     "replace-ext": "0.0.1",
     "stylus": "*",
-    "through2": "^0.6.3",
-    "vinyl-sourcemaps-apply": "^0.1.4"
+    "through2": "0.6.x",
+    "vinyl-sourcemaps-apply": "0.1.x"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "gulp": "3.x",
+    "gulp-sourcemaps": "1.x",
+    "mocha": "2.x",
+    "nib": "1.x",
+    "should": "4.x"
   },
   "engines": {
     "node": ">= 0.9.0"
