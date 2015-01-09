@@ -1,11 +1,12 @@
 'use strict';
 
-var through = require('through2');
-var stylus  = require('accord').load('stylus');
-var gutil   = require('gulp-util');
-var rext    = require('replace-ext');
-var path    = require('path');
-var _       = require('lodash');
+var through        = require('through2');
+var stylus         = require('accord').load('stylus');
+var gutil          = require('gulp-util');
+var rext           = require('replace-ext');
+var path           = require('path');
+var _              = require('lodash');
+var applySourceMap = require('vinyl-sourcemaps-apply');
 
 var PLUGIN_NAME = 'gulp-stylus';
 
@@ -29,10 +30,13 @@ module.exports = function (options) {
     .catch(function(err){
       return cb(new gutil.PluginError(PLUGIN_NAME, err));
     })
-    .then(function(css){
-      if (css !== undefined){
+    .then(function(res){
+      if (res.result !== undefined){
         file.path = rext(file.path, '.css');
-        file.contents = new Buffer(css.result);
+        file.contents = new Buffer(res.result);
+        if (res.sourcemap){
+          applySourceMap(file, res.sourcemap);
+        }
         return cb(null, file);
       }
     });
