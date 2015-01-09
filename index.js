@@ -31,6 +31,9 @@ module.exports = function (options) {
     })
     .then(function(css){
       if (css !== undefined){
+        if(typeof css != "string" && css.result !== undefined){
+          css = css.result;
+        }
         file.path = rext(file.path, '.css');
         file.contents = new Buffer(css);
         return cb(null, file);
