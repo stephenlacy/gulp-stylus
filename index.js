@@ -24,6 +24,9 @@ module.exports = function (options) {
     if (path.extname(file.path) === '.css'){
       return cb(null, file);
     }
+    if (file.sourceMap) {
+      opts.sourcemap = true;
+    }
     opts.filename = file.path;
 
     stylus.render(file.contents.toString('utf8'), opts)
