@@ -18,10 +18,10 @@ module.exports = function (options) {
     if (file.isStream()) {
       return cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
     }
-    if (file.isNull()){
+    if (file.isNull()) {
       return cb(null, file);
     }
-    if (path.extname(file.path) === '.css'){
+    if (path.extname(file.path) === '.css') {
       return cb(null, file);
     }
     if (file.sourceMap) {
@@ -30,14 +30,14 @@ module.exports = function (options) {
     opts.filename = file.path;
 
     stylus.render(file.contents.toString('utf8'), opts)
-    .catch(function(err){
+    .catch(function(err) {
       return cb(new gutil.PluginError(PLUGIN_NAME, err));
     })
-    .then(function(res){
-      if (res.result !== undefined){
+    .then(function(res) {
+      if (res.result !== undefined) {
         file.path = rext(file.path, '.css');
         file.contents = new Buffer(res.result);
-        if (res.sourcemap){
+        if (res.sourcemap) {
           applySourceMap(file, res.sourcemap);
         }
         return cb(null, file);
