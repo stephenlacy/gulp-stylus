@@ -82,7 +82,7 @@ gulp.task('linenos', function () {
 gulp.task('sourcemaps-inline', function () {
   gulp.src('./css/sourcemaps-inline.styl')
     .pipe(sourcemaps.init())
-    .pipe(stylus({ sourcemap: true }))
+    .pipe(stylus())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css/build'));
 });
@@ -91,7 +91,7 @@ gulp.task('sourcemaps-inline', function () {
 gulp.task('sourcemaps-external', function () {
   gulp.src('./css/sourcemaps-external.styl')
     .pipe(sourcemaps.init())
-    .pipe(stylus({ sourcemap: true }))
+    .pipe(stylus())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./css/build'));
 });
