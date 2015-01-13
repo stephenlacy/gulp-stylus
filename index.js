@@ -38,6 +38,7 @@ module.exports = function (options) {
         file.path = rext(file.path, '.css');
         file.contents = new Buffer(res.result);
         if (res.sourcemap) {
+          makePathsRelative(file, res.sourcemap);
           applySourceMap(file, res.sourcemap);
         }
         return cb(null, file);
@@ -46,3 +47,9 @@ module.exports = function (options) {
   });
 
 };
+
+function makePathsRelative(file, sourcemap) {
+  for (var i = 0; i < sourcemap.sources.length; i++) {
+    sourcemap.sources[i] = path.relative(file.base, sourcemap.sources[i]);
+  }
+}
