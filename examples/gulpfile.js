@@ -4,8 +4,6 @@
 var gulp = require('gulp');
 var stylus = require('../');
 
-// include, if you're going to use nib helper library
-var nib = require('nib');
 
 // include, if you want to work with sourcemaps
 var sourcemaps = require('gulp-sourcemaps');
@@ -22,18 +20,11 @@ gulp.task('one', function () {
 gulp.task('compress', function () {
 	gulp.src('./css/compressed.styl')
 		.pipe(stylus({
-      use: nib(),
       compress: true
     }))
 		.pipe(gulp.dest('./css/build'));
 });
 
-// Use nib
-gulp.task('nib', function () {
-  gulp.src('./css/nib.styl')
-    .pipe(stylus({use: [nib()]}))
-    .pipe(gulp.dest('./css/build'));
-});
 
 // Set linenos
 gulp.task('linenos', function () {
@@ -61,4 +52,4 @@ gulp.task('sourcemaps-external', function () {
 });
 
 // Default gulp task to run
-gulp.task('default', ['one', 'compress', 'nib', 'linenos', 'sourcemaps-inline', 'sourcemaps-external']);
+gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'sourcemaps-external']);
