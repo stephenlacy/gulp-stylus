@@ -30,20 +30,20 @@ module.exports = function (options) {
     opts.filename = file.path;
 
     stylus.render(file.contents.toString('utf8'), opts)
-    .catch(function(err) {
-      return cb(new gutil.PluginError(PLUGIN_NAME, err));
-    })
-    .then(function(res) {
-      if (res.result !== undefined) {
-        file.path = rext(file.path, '.css');
-        file.contents = new Buffer(res.result);
-        if (res.sourcemap) {
-          makePathsRelative(file, res.sourcemap);
-          applySourceMap(file, res.sourcemap);
+      .then(function(res) {
+        if (res.result !== undefined) {
+          file.path = rext(file.path, '.css');
+          file.contents = new Buffer(res.result);
+          if (res.sourcemap) {
+            makePathsRelative(file, res.sourcemap);
+            applySourceMap(file, res.sourcemap);
+          }
+          return cb(null, file);
         }
-        return cb(null, file);
-      }
-    });
+      })
+      .catch(function(err) {
+        return cb(new gutil.PluginError(PLUGIN_NAME, err));
+      });
   });
 
 };
