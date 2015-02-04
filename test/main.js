@@ -133,8 +133,8 @@ describe('gulp-stylus', function() {
 			err.name.toString().should.match(/ParseError/);
 			done();
 		});
-    stream.write(fakeFile);
-    stream.end();
+		stream.write(fakeFile);
+		stream.end();
 
   });
 
