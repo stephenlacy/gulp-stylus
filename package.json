@@ -12,7 +12,7 @@
   "dependencies": {
     "accord": "^0.14.0",
     "gulp-util": "^3.0.2",
-    "lodash": "^2.4.1",
+    "lodash": "^3.0.0",
     "replace-ext": "0.0.1",
     "stylus": "*",
     "through2": "^0.6.3",
