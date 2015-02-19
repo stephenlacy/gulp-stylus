@@ -8,6 +8,8 @@ var fs = require('fs');
 
 require('mocha');
 
+var normalContents = fs.readFileSync('test/fixtures/normal.styl');
+
 describe('gulp-stylus', function() {
 	it('should render stylus .styl to CSS .css', function(done) {
 		var stream = stylus();
@@ -16,7 +18,7 @@ describe('gulp-stylus', function() {
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
+			contents: normalContents
 		});
 
 		stream.once('data', function(newFile) {
@@ -36,7 +38,7 @@ describe('gulp-stylus', function() {
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
+			contents: normalContents
 		});
 
 		stream.on('data', function(newFile) {
@@ -58,7 +60,7 @@ describe('gulp-stylus', function() {
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
+			contents: normalContents
 		});
 
 		stream.on('data', function(newFile) {
@@ -164,7 +166,7 @@ describe('gulp-stylus', function() {
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
+			contents: normalContents
 		});
 
 		stream.on('data', function(newFile) {
@@ -189,7 +191,7 @@ describe('gulp-stylus', function() {
 			base: 'test/fixtures',
 			cwd: 'test/',
 			path: 'test/fixtures/normal.styl',
-			contents: fs.readFileSync('test/fixtures/normal.styl')
+			contents: normalContents
 		});
 
 		stream.write(fakeFile);
@@ -209,29 +211,30 @@ describe('gulp-stylus', function() {
 
 	});
 
-    it ('should use base relative paths when generating sourcemaps', function(done) {
-        var stream = sourcemaps.init();
+  it ('should use base relative paths when generating sourcemaps', function(done) {
+    var stream = sourcemaps.init();
 
-        var fakeFile = new gutil.File({
-            base: 'test',
-            cwd: 'test/',
-            path: 'test/fixtures/normal.styl',
-            contents: fs.readFileSync('test/fixtures/normal.styl')
-        });
-
-        stream.write(fakeFile);
-        stream.pipe(stylus())
-            .on('error', done)
-            .on('data', function(newFile) {
-                should.exist(newFile);
-                newFile.sourceMap.sources.length.should.equal(1);
-                newFile.sourceMap.sources[0].should.equal('fixtures/normal.styl');
-                newFile.sourceMap.file.should.equal('fixtures/normal.css');
-                done();
-            });
-
-        stream.end();
-
+    var fakeFile = new gutil.File({
+      base: 'test',
+      cwd: 'test/',
+      path: 'test/fixtures/normal.styl',
+      contents: normalContents
     });
+
+    stream.write(fakeFile);
+    stream.pipe(stylus())
+      .on('error', done)
+      .on('data', function(newFile) {
+        should.exist(newFile);
+        should.exist(newFile.sourceMap);
+        newFile.sourceMap.sources.length.should.equal(1);
+        newFile.sourceMap.sources[0].should.equal('fixtures/normal.styl');
+        newFile.sourceMap.file.should.equal('fixtures/normal.css');
+        done();
+      });
+
+    stream.end();
+
+  });
 
 });
