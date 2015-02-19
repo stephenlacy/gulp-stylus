@@ -209,4 +209,29 @@ describe('gulp-stylus', function() {
 
 	});
 
+    it ('should use base relative paths when generating sourcemaps', function(done) {
+        var stream = sourcemaps.init();
+
+        var fakeFile = new gutil.File({
+            base: 'test',
+            cwd: 'test/',
+            path: 'test/fixtures/normal.styl',
+            contents: fs.readFileSync('test/fixtures/normal.styl')
+        });
+
+        stream.write(fakeFile);
+        stream.pipe(stylus())
+            .on('error', done)
+            .on('data', function(newFile) {
+                should.exist(newFile);
+                newFile.sourceMap.sources.length.should.equal(1);
+                newFile.sourceMap.sources[0].should.equal('fixtures/normal.styl');
+                newFile.sourceMap.file.should.equal('fixtures/normal.css');
+                done();
+            });
+
+        stream.end();
+
+    });
+
 });
