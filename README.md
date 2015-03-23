@@ -69,6 +69,17 @@ gulp.task('linenos', function () {
     .pipe(gulp.dest('./css/build'));
 });
 
+// Include css
+// Stylus has an awkward and perplexing 'incude css' option
+gulp.task('inlcude-css', function() {
+  gulp.src('./css/*.styl')
+    .pipe(stylus({
+      'include css': true
+    }))
+    .pipe(gulp.dest('./'));
+
+});
+
 // Inline sourcemaps
 gulp.task('sourcemaps-inline', function () {
   gulp.src('./css/sourcemaps-inline.styl')
