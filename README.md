@@ -71,7 +71,7 @@ gulp.task('linenos', function () {
 
 // Include css
 // Stylus has an awkward and perplexing 'incude css' option
-gulp.task('inlcude-css', function() {
+gulp.task('include-css', function() {
   gulp.src('./css/*.styl')
     .pipe(stylus({
       'include css': true
