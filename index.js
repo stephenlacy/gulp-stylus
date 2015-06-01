@@ -36,8 +36,8 @@ module.exports = function (options) {
           file.contents = new Buffer(res.result);
           if (res.sourcemap) {
             makePathsRelative(file, res.sourcemap);
+            res.sourcemap.file = file.relative;
             applySourceMap(file, res.sourcemap);
-            file.sourceMap.file = file.relative;
           }
           return cb(null, file);
         }
