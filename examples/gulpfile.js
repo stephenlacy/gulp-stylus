@@ -51,8 +51,8 @@ gulp.task('sourcemaps-external', function () {
     .pipe(gulp.dest('./css/build'));
 });
 
-gulp.task('inlcude-css', function() {
-  // Stylus has an awkward and perplexing 'incude css' option
+gulp.task('include-css', function() {
+  // Stylus has an awkward and perplexing 'include css' option
   gulp.src('./css/*.styl')
     .pipe(stylus({
       'include css': true
