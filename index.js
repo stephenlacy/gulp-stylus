@@ -43,6 +43,7 @@ module.exports = function (options) {
         }
       })
       .catch(function(err) {
+        delete err.input;
         return cb(new gutil.PluginError(PLUGIN_NAME, err));
       });
   });
