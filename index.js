@@ -5,13 +5,13 @@ var stylus         = require('accord').load('stylus');
 var gutil          = require('gulp-util');
 var rext           = require('replace-ext');
 var path           = require('path');
-var _              = require('lodash');
+var assign         = require('lodash.assign');
 var applySourceMap = require('vinyl-sourcemaps-apply');
 
 var PLUGIN_NAME = 'gulp-stylus';
 
 module.exports = function (options) {
-  var opts = _.assign({}, options);
+  var opts = assign({}, options);
 
   return through.obj(function (file, enc, cb) {
 

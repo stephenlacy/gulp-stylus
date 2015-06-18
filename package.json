@@ -10,18 +10,17 @@
   "author": "Steve Lacy <me@slacy.me> (http://slacy.me) | Fractal (http://wearefractal.com)",
   "main": "./index.js",
   "dependencies": {
-    "accord": "^0.15.2",
-    "gulp-util": "^3.0.3",
-    "lodash": "^3.2.0",
+    "accord": "^0.19.0",
+    "gulp-util": "^3.0.5",
+    "lodash.assign": "^3.2.0",
     "replace-ext": "0.0.1",
     "stylus": "*",
-    "through2": "^0.6.3",
+    "through2": "^2.0.0",
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "devDependencies": {
-    "gulp-sourcemaps": "^1.3.0",
-    "mocha": "^2.1.0",
-    "nib": "^1.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "mocha": "^2.2.5",
     "should": "^4.4.4"
   },
   "engines": {
