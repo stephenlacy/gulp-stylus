@@ -1,4 +1,4 @@
-#gulp-stylus
+# gulp-stylus
 [![Build Status](https://travis-ci.org/stevelacy/gulp-stylus.png?branch=master)](https://travis-ci.org/stevelacy/gulp-stylus)
 [![NPM version](https://badge.fury.io/js/gulp-stylus.png)](http://badge.fury.io/js/gulp-stylus)
 
@@ -103,7 +103,7 @@ gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'source
 
 ```
 
-#####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
+##### You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
 ## Options
 #### All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
