@@ -70,7 +70,7 @@ gulp.task('linenos', function () {
 });
 
 // Include css
-// Stylus has an awkward and perplexing 'incude css' option
+// Stylus has an awkward and perplexing 'include css' option
 gulp.task('include-css', function() {
   gulp.src('./css/*.styl')
     .pipe(stylus({
