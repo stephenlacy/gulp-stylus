@@ -50,6 +50,8 @@ module.exports = function (options) {
 
 };
 
+module.exports.stylus = require('stylus');
+
 function makePathsRelative(file, sourcemap) {
   for (var i = 0; i < sourcemap.sources.length; i++) {
     sourcemap.sources[i] = path.relative(file.base, sourcemap.sources[i]);
