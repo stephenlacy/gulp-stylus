@@ -14,6 +14,7 @@ module.exports = function (options) {
   var opts = assign({}, options);
 
   return through.obj(function (file, enc, cb) {
+    var cbCalled = false;
 
     if (file.isStream()) {
       return cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
@@ -39,12 +40,18 @@ module.exports = function (options) {
             res.sourcemap.file = file.relative;
             applySourceMap(file, res.sourcemap);
           }
+          cbCalled = true;
           return cb(null, file);
         }
       })
       .catch(function(err) {
         delete err.input;
-        return cb(new gutil.PluginError(PLUGIN_NAME, err));
+        var wrappedError = new gutil.PluginError(PLUGIN_NAME, err);
+        if (cbCalled) {
+          throw wrappedError;
+        } else {
+          cb(wrappedError);
+        }
       });
   });
 
