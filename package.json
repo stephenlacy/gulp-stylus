@@ -15,6 +15,7 @@
     "lodash.assign": "^3.2.0",
     "replace-ext": "0.0.1",
     "stylus": "^0.52.4",
+    "through2": "^2.0.0",
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "devDependencies": {
