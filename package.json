@@ -14,14 +14,13 @@
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",
     "replace-ext": "0.0.1",
-    "stylus": "^0.52.0",
-    "through2": "^2.0.0",
+    "stylus": "^0.52.4",
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "devDependencies": {
     "gulp-sourcemaps": "^1.5.2",
-    "mocha": "^2.2.5",
-    "should": "^7.0.2"
+    "mocha": "^2.3.2",
+    "should": "^7.1.0"
   },
   "engines": {
     "node": ">= 0.9.0"
