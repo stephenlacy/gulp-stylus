@@ -176,6 +176,8 @@ describe('gulp-stylus', function() {
 			should.exist(newFile.sourceMap);
 			newFile.sourceMap.version.should.equal(3);
 			newFile.sourceMap.mappings.length.should.be.above(1);
+			newFile.sourceMap.sources[0].should.equal('normal.styl');
+			newFile.sourceMap.file.should.equal('normal.css');
 			done();
 		});
 
@@ -204,6 +206,8 @@ describe('gulp-stylus', function() {
 				should.exist(newFile.sourceMap);
 				newFile.sourceMap.version.should.equal(3);
 				newFile.sourceMap.mappings.length.should.be.above(1);
+				newFile.sourceMap.sources[0].should.equal('normal.styl');
+				newFile.sourceMap.file.should.equal('normal.css');
 				done();
 			});
 
@@ -211,30 +215,33 @@ describe('gulp-stylus', function() {
 
 	});
 
-  it ('should use base relative paths when generating sourcemaps', function(done) {
-    var stream = sourcemaps.init();
+	it ('should use native stylus sourcemap options when provided', function(done) {
+		var stream = sourcemaps.init();
 
-    var fakeFile = new gutil.File({
-      base: 'test',
-      cwd: 'test/',
-      path: 'test/fixtures/normal.styl',
-      contents: normalContents
-    });
+		var fakeFile = new gutil.File({
+			base: 'test',
+			cwd: 'test/',
+			path: 'test/fixtures/normal.styl',
+			contents: normalContents
+		});
 
-    stream.write(fakeFile);
-    stream.pipe(stylus())
-      .on('error', done)
-      .on('data', function(newFile) {
-        should.exist(newFile);
-        should.exist(newFile.sourceMap);
-        newFile.sourceMap.sources.length.should.equal(1);
-        newFile.sourceMap.sources[0].should.equal('fixtures/normal.styl');
-        newFile.sourceMap.file.should.equal('fixtures/normal.css');
-        done();
-      });
+		stream.write(fakeFile);
+		stream.pipe(stylus({
+			sourcemap: {basePath: '.'}
+		}))
+			.on('error', done)
+			.on('data', function(newFile) {
+				should.exist(newFile);
+				should.exist(newFile.sourceMap);
+				newFile.sourceMap.sources.length.should.equal(1);
+				newFile.sourceMap.mappings.length.should.be.above(1);
+				newFile.sourceMap.sources[0].should.equal('test/fixtures/normal.styl');
+				newFile.sourceMap.file.should.equal('fixtures/normal.css');
+				done();
+			});
 
-    stream.end();
+		stream.end();
 
-  });
+	});
 
 });
