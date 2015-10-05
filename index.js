@@ -24,8 +24,8 @@ module.exports = function (options) {
     if (path.extname(file.path) === '.css') {
       return cb(null, file);
     }
-    if (file.sourceMap) {
-      opts.sourcemap = true;
+    if (file.sourceMap || opts.sourcemap) {
+      opts.sourcemap = assign({basePath: file.base}, opts.sourcemap);
     }
     opts.filename = file.path;
 
@@ -33,12 +33,12 @@ module.exports = function (options) {
       .then(function(res) {
         if (res.result !== undefined) {
           file.path = rext(file.path, '.css');
-          file.contents = new Buffer(res.result);
           if (res.sourcemap) {
-            makePathsRelative(file, res.sourcemap);
+            res.result = res.result.replace(/^\s*\/\*[@#][\s\t]+sourceMappingURL=.*$/mg, '');
             res.sourcemap.file = file.relative;
             applySourceMap(file, res.sourcemap);
           }
+          file.contents = new Buffer(res.result);
           return cb(null, file);
         }
       })
@@ -49,9 +49,3 @@ module.exports = function (options) {
   });
 
 };
-
-function makePathsRelative(file, sourcemap) {
-  for (var i = 0; i < sourcemap.sources.length; i++) {
-    sourcemap.sources[i] = path.relative(file.base, sourcemap.sources[i]);
-  }
-}
