@@ -105,6 +105,12 @@ gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'source
 
 ##### You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-stylus/tree/master/examples)
 
+## Extras
+You can access the original `stylus` module that `gulp-stylus` uses.
+```
+var originalStylus = require('gulp-stylus').stylus;
+```
+
 ## Options
 #### All stylus options are passed to [accord/stylus](https://github.com/jenius/accord/blob/master/docs/stylus.md)
 

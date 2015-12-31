@@ -49,3 +49,5 @@ module.exports = function (options) {
   });
 
 };
+
+module.exports.stylus = require('stylus');
