@@ -3,6 +3,7 @@
 var should = require('should');
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
+var originalStylus = require('stylus');
 var stylus = require('../');
 var fs = require('fs');
 
@@ -242,6 +243,12 @@ describe('gulp-stylus', function() {
 
   stream.end();
 
+  });
+  
+  it('should export Stylus', function(done) {
+    should.exist(stylus.stylus);
+    should(stylus.stylus).equal(originalStylus);
+    done();
   });
 
 });
