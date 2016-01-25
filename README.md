@@ -46,7 +46,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 // Get one .styl file and render
 gulp.task('one', function () {
-  gulp.src('./css/one.styl')
+  return gulp.src('./css/one.styl')
     .pipe(stylus())
     .pipe(gulp.dest('./css/build'));
 });
@@ -54,7 +54,7 @@ gulp.task('one', function () {
 // Options
 // Options compress
 gulp.task('compress', function () {
-  gulp.src('./css/compressed.styl')
+  return gulp.src('./css/compressed.styl')
     .pipe(stylus({
       compress: true
     }))
@@ -64,7 +64,7 @@ gulp.task('compress', function () {
 
 // Set linenos
 gulp.task('linenos', function () {
-  gulp.src('./css/linenos.styl')
+  return gulp.src('./css/linenos.styl')
     .pipe(stylus({linenos: true}))
     .pipe(gulp.dest('./css/build'));
 });
@@ -72,7 +72,7 @@ gulp.task('linenos', function () {
 // Include css
 // Stylus has an awkward and perplexing 'include css' option
 gulp.task('include-css', function() {
-  gulp.src('./css/*.styl')
+  return gulp.src('./css/*.styl')
     .pipe(stylus({
       'include css': true
     }))
@@ -82,7 +82,7 @@ gulp.task('include-css', function() {
 
 // Inline sourcemaps
 gulp.task('sourcemaps-inline', function () {
-  gulp.src('./css/sourcemaps-inline.styl')
+  return gulp.src('./css/sourcemaps-inline.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(sourcemaps.write())
@@ -91,7 +91,7 @@ gulp.task('sourcemaps-inline', function () {
 
 // External sourcemaps
 gulp.task('sourcemaps-external', function () {
-  gulp.src('./css/sourcemaps-external.styl')
+  return gulp.src('./css/sourcemaps-external.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(sourcemaps.write('.'))
