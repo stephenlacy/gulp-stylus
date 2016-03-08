@@ -29,7 +29,7 @@ module.exports = function (options) {
     }
     opts.filename = file.path;
 
-    stylus.render(file.contents.toString('utf8'), opts)
+    stylus.render(file.contents.toString(enc || 'utf-8'), opts)
       .catch(function(err) {
         delete err.input;
         return cb(new gutil.PluginError(PLUGIN_NAME, err));
