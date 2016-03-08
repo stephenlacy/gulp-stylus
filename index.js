@@ -4,11 +4,13 @@ var through        = require('through2');
 var stylus         = require('accord').load('stylus');
 var gutil          = require('gulp-util');
 var rext           = require('replace-ext');
-var path           = require('path');
+var extname        = require('path').extname;
 var assign         = require('lodash.assign');
 var applySourceMap = require('vinyl-sourcemaps-apply');
 
-var PLUGIN_NAME = 'gulp-stylus';
+function guErr(err) {
+  return new gutil.PluginError('gulp-stylus', err);
+}
 
 module.exports = function (options) {
   var opts = assign({}, options);
@@ -16,12 +18,12 @@ module.exports = function (options) {
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) {
-      return cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+      return cb(guErr('Streaming not supported'));
     }
     if (file.isNull()) {
       return cb(null, file);
     }
-    if (path.extname(file.path) === '.css') {
+    if (extname(file.path) === '.css') {
       return cb(null, file);
     }
     if (file.sourceMap || opts.sourcemap) {
@@ -32,10 +34,12 @@ module.exports = function (options) {
     stylus.render(file.contents.toString(enc || 'utf-8'), opts)
       .catch(function(err) {
         delete err.input;
-        return cb(new gutil.PluginError(PLUGIN_NAME, err));
+        return cb(guErr(err));
       })
       .done(function(res) {
-        if (res == null) return;
+        if (res == null) {
+          return;
+        }
         if (res.result !== undefined) {
           file.path = rext(file.path, '.css');
           if (res.sourcemap) {
