@@ -98,8 +98,21 @@ gulp.task('sourcemaps-external', function () {
     .pipe(gulp.dest('./css/build'));
 });
 
+// Pass an object in raw form to be accessable in stylus
+var data = {red: '#ff0000'};
+gulp.task('pass-object', function () {
+  gulp.src('./sty/main.styl')
+    .pipe(stylus({ rawDefine: { data: data }}))
+    .pipe(gulp.dest('./css/build'));
+});
+
+/* Ex:
+body
+  color: data.red;
+*/
+
 // Default gulp task to run
-gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'sourcemaps-external']);
+gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'sourcemaps-external', 'pass-object']);
 
 ```
 
