@@ -38,6 +38,7 @@ $ npm install --save-dev gulp-stylus
 
 // include the required packages.
 var gulp = require('gulp');
+var data = require('gulp-data');
 var stylus = require('gulp-stylus');
 
 
@@ -103,6 +104,18 @@ var data = {red: '#ff0000'};
 gulp.task('pass-object', function () {
   gulp.src('./sty/main.styl')
     .pipe(stylus({ rawDefine: { data: data }}))
+    .pipe(gulp.dest('./css/build'));
+});
+
+// Use with gulp-data
+gulp.task('gulp-data', function() {
+  gulp.src('./components/**/*.styl')
+    .pipe(data(function(){
+      return {
+        componentPath: '/' + (file.path.replace(file.base, '').replace(/\/[^\/]*$/, ''));
+      };
+    }))
+    .pipe(stylus())
     .pipe(gulp.dest('./css/build'));
 });
 
