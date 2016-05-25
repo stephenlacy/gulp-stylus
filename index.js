@@ -29,6 +29,9 @@ module.exports = function (options) {
     if (file.sourceMap || opts.sourcemap) {
       opts.sourcemap = assign({basePath: file.base}, opts.sourcemap);
     }
+    if (file.data) {
+      opts.define = file.data;
+    }
     opts.filename = file.path;
 
     stylus.render(file.contents.toString(enc || 'utf-8'), opts)

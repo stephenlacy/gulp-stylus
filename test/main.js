@@ -97,6 +97,33 @@ describe('gulp-stylus', function() {
     stream.end();
   });
 
+  it ('should support defining variables in .styl files using gulp-data (data object attached to file)', function(done) {
+    var stream = stylus();
+    var fakeFile = new gutil.File({
+      base: 'test/fixtures',
+      cwd: 'test/',
+      path: 'test/fixtures/define.styl',
+      contents: fs.readFileSync('test/fixtures/define.styl')
+    });
+
+    fakeFile.data = {'white': '#fff'};
+
+    stream.on('data', function(newFile) {
+      should.exist(newFile);
+      should.exist(newFile.contents);
+
+      should.exist(newFile.data);
+      should.exist(newFile.data.white);
+      should(newFile.data.white).equal('#fff');
+
+      String(newFile.contents).should.equal(fs.readFileSync('test/expected/define.css', 'utf8'));
+      done();
+    });
+
+    stream.write(fakeFile);
+    stream.end();
+  });
+
   it('should skip css files', function(done) {
     var stream = stylus();
 
@@ -244,7 +271,7 @@ describe('gulp-stylus', function() {
   stream.end();
 
   });
-  
+
   it('should export Stylus', function(done) {
     should.exist(stylus.stylus);
     should(stylus.stylus).equal(originalStylus);
