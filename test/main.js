@@ -112,6 +112,10 @@ describe('gulp-stylus', function() {
       should.exist(newFile);
       should.exist(newFile.contents);
 
+      should.exist(newFile.data);
+      should.exist(newFile.data.white);
+      should(newFile.data.white).equal('#fff');
+
       String(newFile.contents).should.equal(fs.readFileSync('test/expected/define.css', 'utf8'));
       done();
     });
