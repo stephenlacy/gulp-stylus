@@ -46,7 +46,7 @@ module.exports = function (options) {
         if (res.result !== undefined) {
           file.path = rext(file.path, '.css');
           if (res.sourcemap) {
-            res.result = res.result.replace(/^\s*\/\*[@#][\s\t]+sourceMappingURL=.*$/mg, '');
+            res.result = res.result.replace(/\/\*[@#][\s\t]+sourceMappingURL=.*?\*\/$/mg, '');
             res.sourcemap.file = file.relative;
             applySourceMap(file, res.sourcemap);
           }
