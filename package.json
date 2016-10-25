@@ -10,7 +10,7 @@
   "author": "Steve Lacy <me@slacy.me> (http://slacy.me) | Fractal (http://wearefractal.com)",
   "main": "./index.js",
   "dependencies": {
-    "accord": "^0.24.1",
+    "accord": "^0.26.3",
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",
     "replace-ext": "0.0.1",
