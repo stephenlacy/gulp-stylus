@@ -110,9 +110,9 @@ gulp.task('pass-object', function () {
 // Use with gulp-data
 gulp.task('gulp-data', function() {
   gulp.src('./components/**/*.styl')
-    .pipe(data(function(){
+    .pipe(data(function(file){
       return {
-        componentPath: '/' + (file.path.replace(file.base, '').replace(/\/[^\/]*$/, ''));
+        componentPath: '/' + (file.path.replace(file.base, '').replace(/\/[^\/]*$/, ''))
       };
     }))
     .pipe(stylus())
