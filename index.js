@@ -31,13 +31,14 @@ module.exports = function (options) {
     }
     if (file.data) {
       if (opts.rawGlobals) {
-        delete opts.rawGlobals;
         opts.rawDefine = file.data;
       } else {
         opts.define = file.data;
       }
     }
     opts.filename = file.path;
+    
+    delete opts.rawGlobals;
 
     stylus.render(file.contents.toString(enc || 'utf-8'), opts)
       .catch(function(err) {
