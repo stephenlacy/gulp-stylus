@@ -30,7 +30,12 @@ module.exports = function (options) {
       opts.sourcemap = assign({basePath: file.base}, opts.sourcemap);
     }
     if (file.data) {
-      opts.define = file.data;
+      if (opts.rawGlobals) {
+        delete opts.rawGlobals;
+        opts.rawDefine = file.data;
+      } else {
+        opts.define = file.data;
+      }
     }
     opts.filename = file.path;
 
