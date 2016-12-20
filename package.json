@@ -7,7 +7,7 @@
     "type": "git",
     "url": "http://github.com/stevelacy/gulp-stylus.git"
   },
-  "author": "Steve Lacy <me@slacy.me> (http://slacy.me) | Fractal (http://wearefractal.com)",
+  "author": "Steve Lacy <me@slacy.me> (http://slacy.me)",
   "main": "./index.js",
   "dependencies": {
     "accord": "^0.26.3",
