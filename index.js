@@ -2,14 +2,14 @@
 
 var through        = require('through2');
 var stylus         = require('accord').load('stylus');
-var gutil          = require('gulp-util');
 var rext           = require('replace-ext');
 var extname        = require('path').extname;
 var assign         = require('lodash.assign');
+var PluginError    = require('plugin-error');
 var applySourceMap = require('vinyl-sourcemaps-apply');
 
 function guErr(err) {
-  return new gutil.PluginError('gulp-stylus', err);
+  return new PluginError('gulp-stylus', err);
 }
 
 module.exports = function (options) {

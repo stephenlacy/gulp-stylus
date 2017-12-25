@@ -1,8 +1,8 @@
 'use strict';
 
 var should = require('should');
-var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
+var File = require('vinyl');
 var originalStylus = require('stylus');
 var stylus = require('../');
 var fs = require('fs');
@@ -15,7 +15,7 @@ describe('gulp-stylus', function() {
   it('should render stylus .styl to CSS .css', function(done) {
     var stream = stylus();
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
@@ -35,7 +35,7 @@ describe('gulp-stylus', function() {
 
   it ('should compress when called', function(done) {
     var stream = stylus({compress: true});
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
@@ -57,7 +57,7 @@ describe('gulp-stylus', function() {
 
   it ('should import other .styl files', function(done) {
     var stream = stylus({import: __dirname + '/fixtures/one.styl'});
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
@@ -78,7 +78,7 @@ describe('gulp-stylus', function() {
 
   it ('should define variables in .styl files', function(done) {
     var stream = stylus({define: {'white': '#fff'}});
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/define.styl',
@@ -99,7 +99,7 @@ describe('gulp-stylus', function() {
 
   it ('should support defining variables in .styl files using gulp-data (data object attached to file)', function(done) {
     var stream = stylus();
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/define.styl',
@@ -127,7 +127,7 @@ describe('gulp-stylus', function() {
   it('should skip css files', function(done) {
     var stream = stylus();
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/ie8.css',
@@ -151,7 +151,7 @@ describe('gulp-stylus', function() {
 
     var file = 'test/fixtures/error.styl';
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: file,
@@ -170,7 +170,7 @@ describe('gulp-stylus', function() {
 
   it ('should import nested and reverse recursive files', function(done) {
     var stream = stylus();
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/import.styl',
@@ -190,7 +190,7 @@ describe('gulp-stylus', function() {
   it ('should generate sourcemaps', function(done) {
     var stream = stylus({sourcemap: true});
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
@@ -217,7 +217,7 @@ describe('gulp-stylus', function() {
   it ('should generate sourcemaps with gulp-sourcemaps', function(done) {
     var stream = sourcemaps.init();
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test/fixtures',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
@@ -246,7 +246,7 @@ describe('gulp-stylus', function() {
   it ('should use native stylus sourcemap options when provided', function(done) {
     var stream = sourcemaps.init();
 
-    var fakeFile = new gutil.File({
+    var fakeFile = new File({
       base: 'test',
       cwd: 'test/',
       path: 'test/fixtures/normal.styl',
