@@ -20,7 +20,7 @@
 </tr>
 <tr>
 <td>Gulp Version</td>
-<td>3.x</td>
+<td>>= 3.x</td>
 </tr>
 </table>
 
