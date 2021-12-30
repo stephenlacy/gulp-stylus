@@ -50,7 +50,7 @@ module.exports = function (options) {
             res.sourcemap.file = file.relative;
             applySourceMap(file, res.sourcemap);
           }
-          file.contents = new Buffer(res.result);
+          file.contents = Buffer.from(res.result);
           return cb(null, file);
         }
       });
