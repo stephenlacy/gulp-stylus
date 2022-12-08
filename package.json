@@ -10,19 +10,19 @@
   "author": "Steve Lacy <me@slacy.me> (http://slacy.me)",
   "main": "./index.js",
   "dependencies": {
-    "accord": "^0.26.4",
-    "lodash.assign": "^3.2.0",
-    "plugin-error": "^0.1.2",
-    "replace-ext": "0.0.1",
-    "stylus": "^0.54.8",
-    "through2": "^2.0.5",
+    "accord": "^0.30.0",
+    "lodash.assign": "^4.2.0",
+    "plugin-error": "^2.0.1",
+    "replace-ext": "2.0.0",
+    "stylus": "^0.59.0",
+    "through2": "^4.0.2",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "gulp-sourcemaps": "^1.12.1",
-    "mocha": "^2.5.3",
-    "should": "^8.4.0",
-    "vinyl": "^2.2.1"
+    "gulp-sourcemaps": "^3.0.0",
+    "mocha": "^10.1.0",
+    "should": "^13.2.3",
+    "vinyl": "^3.0.0"
   },
   "engines": {
     "node": ">= 4.2.0"
